@@ -124,10 +124,14 @@ func _integrate_forces(state):
 	cs2d.set_scale(s)
 	pc.set_scale(s)
 	
-	var points = pc.get_polygon()
-	points[0].y = (1 - jetpack_fuel / MAX_JETPACK_FUEL) * 100
-	points[3].y = (1- jetpack_fuel / MAX_JETPACK_FUEL) * 100
-	pc.set_polygon(points)
+	if (jetpack_fuel <= 0):
+		pc.hide()
+	else:
+		pc.show()
+		var points = pc.get_polygon()
+		points[0].y = (1 - jetpack_fuel / MAX_JETPACK_FUEL) * 100
+		points[3].y = (1- jetpack_fuel / MAX_JETPACK_FUEL) * 100
+		pc.set_polygon(points)
 	
 	lv += state.get_total_gravity()*step
 	state.set_linear_velocity(lv)
