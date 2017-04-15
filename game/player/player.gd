@@ -164,11 +164,9 @@ func _ready():
 	colour_ramp.set_colors([base_colour, base_colour, colour3])
 	colour_ramp.set_offsets([0, 0.6667, 1])
 	
-	print(colour_ramp.get_point_count())
-	print(base_colour)
-	
 	get_node("base-square/jetpack-particles").set_color_ramp(colour_ramp)
 	get_node("player-colour").set_color(base_colour)
+	get_node("base-square/player-outline").set_color(base_colour)
 	
 	randomize()
 	move_to_spawn()
