@@ -8,6 +8,7 @@ func _ready():
 func reset_score():
 	for i in range(player_scores.size()):
 		player_scores[i] = 0
+		get_node("player"+str(i+1)).set_text("0")
 
 func add_to_score(player_index):
 	player_scores[player_index] += 1
