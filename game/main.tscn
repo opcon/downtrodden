@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/spawn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/level1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://score.gd" type="Script" id=4]
+[ext_resource path="res://fonts/Rubik.tres" type="DynamicFont" id=5]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Polygon2D" parent="."]
+
+z/z = -15
+polygon = Vector2Array( 0, 0, 1920, 0, 1920, 1080, 0, 1080 )
+uv = Vector2Array(  )
+color = Color( 0.132111, 0.132111, 0.152344, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Player1" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 996.436, 978.76 )
+base_colour = Color( 0.625, 1, 0.991211, 1 )
+
+[node name="Player2" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 425.015, 417.425 )
+index = 1
+base_colour = Color( 1, 0, 0.421875, 1 )
+
+[node name="spawn-points" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="spawn" parent="spawn-points" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 196.843, 366.963 )
+
+[node name="spawn 2" parent="spawn-points" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 1483.02, 87.5199 )
+
+[node name="spawn 3" parent="spawn-points" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 1560.75, 700.075 )
+
+[node name="spawn 4" parent="spawn-points" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 1153.61, 93.0718 )
+
+[node name="spawn 5" parent="spawn-points" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 122.818, 705.626 )
+
+[node name="level" parent="." instance=ExtResource( 3 )]
+
+[node name="score" type="Node2D" parent="."]
+
+script/script = ExtResource( 4 )
+
+[node name="player1" type="Label" parent="score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 50.0
+margin/top = 50.0
+margin/right = 103.0
+margin/bottom = 127.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.625, 1, 0.991211, 1 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="player2" type="Label" parent="score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1817.0
+margin/top = 50.0
+margin/right = 1870.0
+margin/bottom = 127.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 0, 0.421875, 1 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

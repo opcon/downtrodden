@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://particle-colour-ramp.tres" type="ColorRamp" id=1]
+[ext_resource path="res://player/death-particles.gd" type="Script" id=2]
+
+
+[node name="Particles2D" type="Particles2D"]
+
+z/z = -1
+config/amount = 1024
+config/lifetime = 2.0
+config/preprocess = 1.9
+config/half_extents = Vector2( 45, 45 )
+config/local_space = false
+config/explosiveness = 0.0
+params/direction = 0.0
+params/spread = 180.0
+params/linear_velocity = 55.85
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 4.0
+params/final_size = 2.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 1.0
+randomness/radial_accel = 1.0
+randomness/tangential_accel = 1.0
+color/color_ramp = ExtResource( 1 )
+script/script = ExtResource( 2 )
+
+

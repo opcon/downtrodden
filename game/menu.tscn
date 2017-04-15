@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://fonts/Rubik.tres" type="DynamicFont" id=1]
+[ext_resource path="res://mainmenu.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.132111, 0.132111, 0.152344, 1 )
+light_color = Color( 0, 0, 0, 0 )
+dark_color = Color( 0, 0, 0, 0 )
+border_size = 0
+border_blend = false
+draw_bg = true
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 1, 1, 1, 0 )
+light_color = Color( 1, 1, 1, 1 )
+dark_color = Color( 1, 1, 1, 1 )
+border_size = 5
+border_blend = true
+draw_bg = false
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[node name="MainMenu" type="Control"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = -40.0
+margin/bottom = -40.0
+
+[node name="Panel" type="Panel" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -960.0
+margin/top = -540.0
+margin/right = -920.0
+margin/bottom = -500.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="MainMenuButtons" type="VButtonArray" parent="."]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 180.0
+margin/top = 170.0
+margin/right = -140.0
+margin/bottom = -130.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/selected = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font_selected = ExtResource( 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_constants/button_separator = 100
+flat = false
+button/count = 2
+button/min_button_size = 100.0
+button/align = 0
+button/0/text = "Play"
+button/0/tooltip = ""
+button/0/icon = null
+button/1/text = "Quit"
+button/1/tooltip = ""
+button/1/icon = null
+button/selected = 0
+script/script = ExtResource( 2 )
+
+[connection signal="button_selected" from="MainMenuButtons" to="MainMenuButtons" method="_on_MainMenuButtons_button_selected"]
+
+

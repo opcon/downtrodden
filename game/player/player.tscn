@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://particle-colour-ramp.tres" type="ColorRamp" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 48, 48 )
+
+[node name="Player" type="RigidBody2D" groups=[ "player" ]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 2
+mass = 3.0
+friction = 0.0
+bounce = 0.0
+gravity_scale = 5.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 4
+contact_monitor = true
+sleeping = false
+can_sleep = false
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = 1.0
+damp_override/angular = -1.0
+script/script = ExtResource( 1 )
+index = 0
+base_colour = Color( 1, 1, 1, 1 )
+
+[node name="base-square" type="Polygon2D" parent="."]
+
+polygon = Vector2Array( 0, 0, 0, 100, 100, 100, 100, 0 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( -50, -50 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="jetpack-particles" type="Particles2D" parent="base-square"]
+
+transform/pos = Vector2( 1.31675, 18.0238 )
+z/z = -1
+config/amount = 1024
+config/lifetime = 2.0
+config/local_space = false
+params/direction = 0.0
+params/spread = 20.0
+params/linear_velocity = 200.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 19.6
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 55.854
+params/initial_angle = 0.0
+params/initial_size = 2.0
+params/final_size = 5.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 0.35
+randomness/spread = 1.0
+randomness/linear_velocity = 0.5
+randomness/initial_angle = 1.0
+randomness/initial_size = 0.38
+randomness/final_size = 0.38
+color/color_ramp = ExtResource( 2 )
+
+[node name="player-colour" type="Polygon2D" parent="."]
+
+polygon = Vector2Array( 0, 0, 0, 100, 100, 100, 100, 0 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( -50, -50 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="player-collision" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+
