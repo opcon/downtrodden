@@ -34,10 +34,12 @@ onready var score_node = parent_node.get_node("score")
 var death_particles_packed = preload("death-particles.tscn")
 var colour_ramp
 
-var last_collided_player_index = -1
+var last_collided_team = -1
 
 export(int) var index = 0
 export(Color) var base_colour = Color(0, 0, 0)
+
+var team = 0
 
 func _integrate_forces(state):
 	if (not alive): return
@@ -56,12 +58,14 @@ func _integrate_forces(state):
 			found_floor = true
 			floor_timer = 0
 			floor_index = x
-			if (state.get_contact_collider_object(x).is_in_group("player")):
+			var cobject = state.get_contact_collider_object(x)
+			if (cobject.is_in_group("player") and cobject.team != team):
 				lv.y -= JUMP_SPEED
 		if (ci.dot(Vector2(0,1)) > 0.6):
 			not_colliding_top = false;
-			if (state.get_contact_collider_object(x).is_in_group("player")):
-				last_collided_player_index = state.get_contact_collider_object(x).index
+			var cobject = state.get_contact_collider_object(x)
+			if (cobject.is_in_group("player") and cobject.team != team):
+				last_collided_team = cobject.team
 				alive = false
 				return
 		else:
@@ -201,7 +205,7 @@ func on_health_state_changed(state_from, state_to, args):
 	elif (state_to == "dead"):
 		alive = false
 		jetpack_fuel = MAX_JETPACK_FUEL
-		score_node.add_to_score(last_collided_player_index)
+		score_node.add_to_score(last_collided_team)
 		var inst = death_particles_packed.instance()
 		parent_node.add_child(inst)
 		inst.set_pos(get_pos())

@@ -5,5 +5,5 @@ func _ready():
 
 func _input(event):
 	if (event.is_action("exit") and event.is_pressed()):
-		get_tree().call_deferred("change_scene", "menu.tscn")
+		GameState.goto_scene("menu.tscn")
 		get_tree().set_input_as_handled()

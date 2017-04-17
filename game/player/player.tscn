@@ -8,7 +8,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 48, 48 )
 
-[node name="Player" type="RigidBody2D" groups=[ "player" ]]
+[node name="Player" type="RigidBody2D" groups=[
+"player",
+]]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -69,6 +71,7 @@ transform/pos = Vector2( 1.31675, 18.0238 )
 z/z = -1
 config/amount = 1024
 config/lifetime = 2.0
+config/process_mode = 1
 config/local_space = false
 params/direction = 0.0
 params/spread = 20.0

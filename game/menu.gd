@@ -11,6 +11,7 @@ func _ready():
 	#var bm = get_node("BackgroundMusic")
 	#remove_child(bm)
 	#get_tree().get_root().call_deferred("add_child", bm)
+	GameState.reset()
 	pass
 
 func _input(event):

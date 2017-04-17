@@ -21,8 +21,8 @@ func _process(delta):
 
 func do_input():
 	if (selected_button == PLAY_BUTTON):
-		BackgroundMusic.fade_volume(1, 0.5)
-		get_tree().change_scene("choose-mode.tscn")
+		BackgroundMusic.fade_volume(0.5, 0.5)
+		GameState.goto_scene("choose-mode.tscn")
 	elif (selected_button == QUIT_BUTTON):
 		get_tree().quit()
 	

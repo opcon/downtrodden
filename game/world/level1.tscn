@@ -7,6 +7,21 @@
 
 [node name="level" type="Node2D"]
 
+[node name="background" type="Polygon2D" parent="."]
+
+z/z = -15
+polygon = Vector2Array( 0, 0, 1920, 0, 1920, 1080, 0, 1080 )
+uv = Vector2Array(  )
+color = Color( 0.132111, 0.132111, 0.152344, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
 [node name="boundaries" parent="." instance=ExtResource( 1 )]
 
 [node name="platforms" type="Node2D" parent="."]

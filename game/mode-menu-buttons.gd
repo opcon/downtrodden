@@ -20,9 +20,15 @@ func _process(delta):
 		do_input()
 
 func do_input():
-	if (selected_button == ONE_V_ONE or selected_button == TWO_V_TWO or selected_button == FREE_FOR_ALL):
-		BackgroundMusic.fade_volume(1, 0.5)
-		get_tree().change_scene("main.tscn")
+	if (selected_button == ONE_V_ONE):
+		GameState.currentGameMode = GameState.GameMode.OneVOne
+	elif (selected_button == TWO_V_TWO):
+		GameState.currentGameMode = GameState.GameMode.TwoVTwo
+	elif (selected_button == FREE_FOR_ALL):
+		GameState.currentGameMode = GameState.GameMode.FFA
+	GameState.update_game_mode()
+	BackgroundMusic.fade_volume(0.75, 0.5)
+	GameState.goto_scene("player-select.tscn")
 	
 
 func _input_event(event):
