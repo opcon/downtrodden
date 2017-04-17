@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://world/spawn.tscn" type="PackedScene" id=2]
-[ext_resource path="res://world/level1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://score.gd" type="Script" id=4]
-[ext_resource path="res://fonts/Rubik.tres" type="DynamicFont" id=5]
-[ext_resource path="res://scene-management.gd" type="Script" id=6]
+[ext_resource path="res://world/level1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://score.gd" type="Script" id=3]
+[ext_resource path="res://fonts/Rubik.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scene-management.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -40,35 +39,11 @@ base_colour = Color( 1, 0, 0.421875, 1 )
 index = 2
 base_colour = Color( 0.878906, 0.577909, 0.257492, 1 )
 
-[node name="spawn-points" type="Node2D" parent="."]
-
-editor/display_folded = true
-
-[node name="spawn" parent="spawn-points" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 196.843, 366.963 )
-
-[node name="spawn 2" parent="spawn-points" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 1483.02, 87.5199 )
-
-[node name="spawn 3" parent="spawn-points" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 1560.75, 700.075 )
-
-[node name="spawn 4" parent="spawn-points" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 1153.61, 93.0718 )
-
-[node name="spawn 5" parent="spawn-points" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 122.818, 705.626 )
-
-[node name="level" parent="." instance=ExtResource( 3 )]
+[node name="level" parent="." instance=ExtResource( 2 )]
 
 [node name="score" type="Node2D" parent="."]
 
-script/script = ExtResource( 4 )
+script/script = ExtResource( 3 )
 
 [node name="player1" type="Label" parent="score"]
 
@@ -80,7 +55,7 @@ margin/left = 100.0
 margin/top = 50.0
 margin/right = 206.0
 margin/bottom = 127.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.625, 1, 0.991211, 1 )
 text = "99"
 percent_visible = 1.0
@@ -97,7 +72,7 @@ margin/left = 1770.0
 margin/top = 50.0
 margin/right = 1876.0
 margin/bottom = 127.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 1, 0, 0.421875, 1 )
 text = "99"
 percent_visible = 1.0
@@ -114,7 +89,7 @@ margin/left = 1770.0
 margin/top = 974.0
 margin/right = 1876.0
 margin/bottom = 1051.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.878906, 0.577909, 0.257492, 1 )
 text = "99"
 percent_visible = 1.0
@@ -123,6 +98,6 @@ max_lines_visible = -1
 
 [node name="scene-management" type="Node2D" parent="."]
 
-script/script = ExtResource( 6 )
+script/script = ExtResource( 5 )
 
 
