@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Rubik.tres" type="DynamicFont" id=2]
 [ext_resource path="res://mainmenu.gd" type="Script" id=3]
+[ext_resource path="res://fonts/MontserratAlternates-Bold.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -36,6 +37,21 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
+
+[sub_resource type="DynamicFont" id=4]
+
+font/size = 50
+font/use_mipmaps = true
+font/use_filter = false
+font/font = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+
+font/size = 50
+extra_spacing/char = 10
+font/use_mipmaps = true
+font/use_filter = false
+font/font = ExtResource( 4 )
 
 [node name="MainMenu" type="Control"]
 
@@ -102,6 +118,40 @@ button/2/tooltip = ""
 button/2/icon = null
 button/selected = 0
 script/script = ExtResource( 3 )
+
+[node name="Title" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -962.0
+margin/top = 485.0
+margin/right = -589.0
+margin/bottom = 547.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 0.316941 )
+text = "DownTrodden"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Credit" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 789.0
+margin/top = 484.0
+margin/right = 960.0
+margin/bottom = 546.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 0.316941 )
+text = "PTRK"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="button_selected" from="MainMenuButtons" to="MainMenuButtons" method="_on_MainMenuButtons_button_selected"]
 
