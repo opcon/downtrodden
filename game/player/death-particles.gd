@@ -14,5 +14,5 @@ func _ready():
 func _process(delta):
 	lifetime += delta
 	if (lifetime >= MAX_LIFETIME):
-		get_parent().remove_child(self)
 		queue_free()
+		#get_parent().remove_child(self)
