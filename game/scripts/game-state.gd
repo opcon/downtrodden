@@ -9,9 +9,9 @@ enum GameMode {
 
 var base_colours = [
 	Color(0.625,1,0.991211), 
-	Color(1,0,0.421875), 
-	Color(0.878906,0.577909,0.257492), 
-	Color(0.392857,0.839844,0.314941)
+	Color(1,0,0.421875),
+	Color(0.9375,0.539246,0.300293),
+	Color(0.9375,0.539246,0.300293)
 ]
 
 var currentScene = null

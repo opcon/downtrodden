@@ -8,6 +8,7 @@
 
 [node name="score" type="Node2D" parent="."]
 
+editor/display_folded = true
 z/z = 1
 script/script = ExtResource( 1 )
 
@@ -59,7 +60,7 @@ margin/top = 974.0
 margin/right = 181.0
 margin/bottom = 1051.0
 custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.878906, 0.577909, 0.257492, 1 )
+custom_colors/font_color = Color( 0.9375, 0.539246, 0.300293, 1 )
 text = "99"
 percent_visible = 1.0
 lines_skipped = 0
@@ -77,7 +78,7 @@ margin/top = 974.0
 margin/right = 1876.0
 margin/bottom = 1051.0
 custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.392857, 0.839844, 0.314941, 1 )
+custom_colors/font_color = Color( 0.38443, 0.863281, 0.470474, 1 )
 text = "99"
 percent_visible = 1.0
 lines_skipped = 0

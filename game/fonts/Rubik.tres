@@ -1,6 +1,6 @@
 [gd_resource type="DynamicFont" load_steps=2 format=1]
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="DynamicFontData" id=1]
 
 font_path = "res://fonts/RubikMonoOne-Regular.ttf"
 
@@ -9,5 +9,5 @@ font_path = "res://fonts/RubikMonoOne-Regular.ttf"
 font/size = 62
 font/use_mipmaps = false
 font/use_filter = false
-font/font = SubResource( 2 )
+font/font = SubResource( 1 )
 
