@@ -27,7 +27,7 @@ func do_input():
 	elif (selected_button == FREE_FOR_ALL):
 		GameState.currentGameMode = GameState.GameMode.FFA
 	GameState.update_game_mode()
-	BackgroundMusic.fade_volume(0.75, 0.5)
+	BackgroundMusic.fade_volume(0.5, 0.5)
 	GameState.goto_scene("player-select.tscn")
 	
 
