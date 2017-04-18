@@ -74,12 +74,12 @@ func start_game(level_name):
 	for i in range(number_of_teams):
 		for j in range(players_per_team):
 			var player = player_resource.instance()
-			player.index = i+j
+			player.index = i*players_per_team+j
 			player.team = i
 			player.base_colour = GameState.base_colours[i]
-			player.set_name("Player" + str(i+j+1))
-		
-			build_action_list(player.index, player_input_methods[i+j])
+			player.set_name("Player" + str(i*players_per_team+j+1))
+			print("Adding input for player " + str(i*players_per_team+j) + ", input method is " + str(player_input_methods[i*players_per_team+j]))
+			build_action_list(player.index, player_input_methods[i*players_per_team+j])
 		
 			game_scene.add_child(player)
 		game_scene.get_node("score").get_node("player" + str(i+1)).show()
