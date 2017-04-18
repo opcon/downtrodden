@@ -26,12 +26,10 @@ invert/border = 100.0
 
 [node name="platforms" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="StaticBody2D 2" parent="platforms" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 1557.01, 837.676 )
-transform/scale = Vector2( 4, 4 )
+transform/pos = Vector2( 1557.01, 776.307 )
+transform/scale = Vector2( 4, 2 )
 
 [node name="StaticBody2D" parent="platforms" instance=ExtResource( 3 )]
 
@@ -45,8 +43,6 @@ transform/scale = Vector2( 5, 2 )
 
 [node name="spawn-points" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="spawn" parent="spawn-points" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 196.843, 366.963 )
@@ -57,7 +53,7 @@ transform/pos = Vector2( 1483.02, 87.5199 )
 
 [node name="spawn 3" parent="spawn-points" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 1560.75, 700.075 )
+transform/pos = Vector2( 1560.75, 666.601 )
 
 [node name="spawn 4" parent="spawn-points" instance=ExtResource( 4 )]
 
