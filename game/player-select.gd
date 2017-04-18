@@ -15,6 +15,7 @@ var player_input_methods = []
 
 func _ready():	
 	set_process_input(true)
+	GameState.update_game_mode()
 	var children = get_node("players").get_children()
 	for i in range(children.size()):
 		children[i].hide()
@@ -34,7 +35,7 @@ func _ready():
 func _input(event):
 	if (event.is_pressed()):
 		if (event.type == InputEvent.KEY):
-			if (event.scancode == KEY_SPACE or event.scancode == KEY_ENTER or event.scancode == KEY_RETURN):
+			if (event.scancode == KEY_SPACE):
 				set_player_input("Keyboard", event.device)
 			elif (event.scancode == KEY_ESCAPE):
 				remove_player_input("Keyboard", event.device)

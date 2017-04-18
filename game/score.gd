@@ -1,6 +1,6 @@
 extends Node2D
 
-var player_scores = [0, 0, 0]
+var player_scores = [0, 0, 0, 0]
 
 func _ready():
 	reset_score()
