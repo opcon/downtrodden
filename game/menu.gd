@@ -15,5 +15,5 @@ func _ready():
 	pass
 
 func _input(event):
-	if (event.is_action("exit") and event.is_pressed()):
+	if (event.is_action("ui_cancel") and event.is_pressed()):
 		get_tree().quit()

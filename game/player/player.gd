@@ -41,8 +41,10 @@ export(Color) var base_colour = Color(0, 0, 0)
 
 var team = 0
 
+var input_enabled = true
+
 func _integrate_forces(state):
-	if (not alive): return
+	if (not alive or not input_enabled): return
 	
 	var lv = state.get_linear_velocity()
 	var step = state.get_step()
@@ -210,7 +212,6 @@ func on_health_state_changed(state_from, state_to, args):
 		parent_node.add_child(inst)
 		inst.set_pos(get_pos())
 		inst.set_color_ramp(colour_ramp)
-		#inst.set_pos(Vector2(1000, 1000))
 		disable()
 
 var old_layer_mask

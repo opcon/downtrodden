@@ -13,7 +13,7 @@ var current_player_number = 0
 
 var player_input_methods = []
 
-func _ready():	
+func _ready():
 	set_process_input(true)
 	GameState.update_game_mode()
 	var children = get_node("players").get_children()
@@ -117,6 +117,8 @@ func set_player_input(type, device):
 
 func goto_level_select():
 	GameState.player_input_methods = player_input_methods
+	
+	GameState.ensure_ui_actions()
 	
 	# Update number of players if in FFA
 	if (GameState.currentGameMode == GameState.GameMode.FFA):

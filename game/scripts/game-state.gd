@@ -18,8 +18,13 @@ var currentScene = null
 var currentGameMode = GameMode.None
 var number_of_players = 0
 var number_of_teams = 0
+var maximum_score = 0
 
 var player_input_methods = []
+var level_list = []
+var current_level_index = 0
+
+var winning_team_index = 0
 
 func _ready():
 	var root = get_tree().get_root()
@@ -30,7 +35,11 @@ func reset():
 	currentGameMode = GameMode.None
 	number_of_players = 0
 	number_of_teams = 0
-	
+	player_input_methods = []
+	level_list = []
+	current_level_index = 0
+	winning_team_index = 0
+	maximum_score = 0
 
 func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
@@ -78,11 +87,13 @@ func start_game(level_name):
 			player.team = i
 			player.base_colour = GameState.base_colours[i]
 			player.set_name("Player" + str(i*players_per_team+j+1))
+			player.add_to_group("players")
 			print("Adding input for player " + str(i*players_per_team+j) + ", input method is " + str(player_input_methods[i*players_per_team+j]))
 			build_action_list(player.index, player_input_methods[i*players_per_team+j])
-		
 			game_scene.add_child(player)
-		game_scene.get_node("score").get_node("player" + str(i+1)).show()
+		#game_scene.get_node("score").get_node("player" + str(i+1)).show()
+	
+	game_scene.get_node("score").reset_score(maximum_score, number_of_teams)
 	
 	# Add the level to our scene
 	game_scene.add_child(level)
@@ -138,7 +149,78 @@ func build_action_list(player_id, input_method):
 	erase_and_add_action("move_right" + str(player_id), right_event)
 	erase_and_add_action("move_up" + str(player_id), jump_event)
 	
+	build_gui_action_list(input_method)
+	
+func build_gui_action_list(input_method):
+	var ui_up_event = InputEvent()
+	var ui_down_event = InputEvent()
+	var ui_accept_event = InputEvent()
+	var ui_cancel_event = InputEvent()
+	var pause_event = InputEvent()
+
+	if (input_method[0] == "Keyboard"):
+		ui_up_event.type = InputEvent.KEY
+		ui_down_event.type = InputEvent.KEY
+		ui_accept_event.type = InputEvent.KEY
+		ui_cancel_event.type = InputEvent.KEY
+		pause_event.type = InputEvent.KEY
+		
+		ui_up_event.device = input_method[1]
+		ui_down_event.device = input_method[1]
+		ui_accept_event.device = input_method[1]
+		ui_cancel_event.device = input_method[1]
+		pause_event.device = input_method[1]
+		
+		ui_up_event.scancode = KEY_W
+		ui_down_event.scancode = KEY_S
+		ui_accept_event.scancode = KEY_SPACE
+		ui_cancel_event.scancode = KEY_ESCAPE
+		pause_event.scancode = KEY_ESCAPE
+		
+	elif (input_method[0] == "Gamepad"):
+		ui_up_event.type = InputEvent.JOYSTICK_BUTTON
+		ui_down_event.type = InputEvent.JOYSTICK_BUTTON
+		ui_accept_event.type = InputEvent.JOYSTICK_BUTTON
+		ui_cancel_event.type = InputEvent.JOYSTICK_BUTTON
+		pause_event.type = InputEvent.JOYSTICK_BUTTON
+		
+		ui_up_event.device = input_method[1]
+		ui_down_event.device = input_method[1]
+		ui_accept_event.device = input_method[1]
+		ui_cancel_event.device = input_method[1]
+		pause_event.device = input_method[1]
+		
+		ui_up_event.button_index = JOY_DPAD_UP
+		ui_down_event.button_index = JOY_DPAD_DOWN
+		ui_accept_event.button_index = JOY_XBOX_A
+		ui_cancel_event.button_index = JOY_XBOX_B
+		pause_event.button_index = JOY_START
+	
+	add_event_to_action("ui_up", ui_up_event)
+	add_event_to_action("ui_down", ui_down_event)
+	add_event_to_action("ui_accept", ui_accept_event)
+	add_event_to_action("ui_cancel", ui_cancel_event)
+	add_event_to_action("pause", pause_event)
+	
 func erase_and_add_action(action, event):
 	InputMap.erase_action(action)
 	InputMap.add_action(action)
 	InputMap.action_add_event(action, event)
+
+func add_event_to_action(action, event):
+	if (InputMap.action_has_event(action, event)): return
+	print("Adding event %s to action %s" % [event, action])
+	InputMap.action_add_event(action, event)
+
+func goto_menu():
+		BackgroundMusic.fade_volume(0.25, 0.5)
+		goto_scene("menu.tscn")
+		get_tree().set_input_as_handled()
+
+func goto_next_level():
+	current_level_index = (current_level_index + 1) % level_list.size()
+	call_deferred("start_game", level_list[current_level_index])
+
+func ensure_ui_actions():
+	for input in player_input_methods:
+		build_gui_action_list(input)
