@@ -67,7 +67,7 @@ margin/right = -920.0
 margin/bottom = -500.0
 custom_styles/panel = SubResource( 1 )
 
-[node name="MainMenuButtons" type="VButtonArray" parent="."]
+[node name="mode-buttons" type="VButtonArray" parent="."]
 
 anchor/left = 3
 anchor/top = 3
@@ -78,9 +78,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 249.0
-margin/top = 272.0
+margin/top = 560.0
 margin/right = -209.0
-margin/bottom = -232.0
+margin/bottom = -520.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/selected = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
@@ -90,7 +90,7 @@ custom_constants/button_separator = 100
 flat = false
 button/count = 3
 button/min_button_size = 100.0
-button/align = 0
+button/align = 1
 button/0/text = "1 v 1"
 button/0/tooltip = ""
 button/0/icon = null
@@ -103,6 +103,6 @@ button/2/icon = null
 button/selected = 0
 script/script = ExtResource( 3 )
 
-[connection signal="button_selected" from="MainMenuButtons" to="MainMenuButtons" method="_on_MainMenuButtons_button_selected"]
+[connection signal="button_selected" from="mode-buttons" to="mode-buttons" method="_on_MainMenuButtons_button_selected"]
 
 

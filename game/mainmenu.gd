@@ -23,6 +23,8 @@ func do_input():
 	if (selected_button == PLAY_BUTTON):
 		BackgroundMusic.fade_volume(0.4, 0.5)
 		GameState.goto_scene("choose-mode.tscn")
+	elif (selected_button == OPTIONS_BUTTON):
+		GameState.goto_scene("options.tscn")
 	elif (selected_button == QUIT_BUTTON):
 		get_tree().quit()
 	

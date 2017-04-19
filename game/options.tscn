@@ -1,0 +1,189 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://fonts/Rubik.tres" type="DynamicFont" id=1]
+
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Control
+
+func _ready():
+	set_process_input(true)
+
+func _input(event):
+	if (event.is_action(\"ui_cancel\") and event.is_pressed()):
+		GameState.goto_scene(\"menu.tscn\")
+		get_tree().set_input_as_handled()"
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.132111, 0.132111, 0.152344, 1 )
+light_color = Color( 0, 0, 0, 0 )
+dark_color = Color( 0, 0, 0, 0 )
+border_size = 0
+border_blend = false
+draw_bg = true
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 1, 1, 1, 0 )
+light_color = Color( 1, 1, 1, 1 )
+dark_color = Color( 1, 1, 1, 1 )
+border_size = 5
+border_blend = true
+draw_bg = false
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends VButtonArray
+
+const PADDING = 50
+
+const FULLSCREEN_OPTION = 0
+const VOLUME_OPTION = 1
+const MAP_KEYS_OPTION = 2
+
+var selected_button = 0;
+var pending_input = false;
+
+var buttons = {\"fullscreen\":\"no\", \"volume\":\"20%\", \"map keys\":\"\"}
+var button_order = [\"fullscreen\", \"volume\", \"map keys\"]
+
+func _ready():
+	redraw_options()
+	call_deferred(\"update_position\")
+	grab_focus()
+	set_process(true)
+
+func do_input():
+	if (selected_button == FULLSCREEN_OPTION):
+		if (buttons[\"fullscreen\"] == \"yes\"):
+			buttons[\"fullscreen\"] = \"no\"
+			OS.set_window_fullscreen(false)
+		else:
+			buttons[\"fullscreen\"] = \"yes\"
+			OS.set_window_fullscreen(true)
+	if (selected_button == VOLUME_OPTION):
+		var vol_string = buttons[\"volume\"]
+		var current_volume = int(vol_string.substr(0, vol_string.length() - 1))
+		current_volume += 10
+		if (current_volume > 100):
+			current_volume = 0
+			buttons[\"volume\"] = \"mute\"
+		else:
+			buttons[\"volume\"] = \"%s\" % current_volume + \"%\"
+	if (selected_button == MAP_KEYS_OPTION):
+		get_tree().set_pause(true)
+		var map_keys_scene = load(\"map-keyboard.tscn\").instance()
+		get_parent().add_child(map_keys_scene)
+		
+	redraw_options()
+
+func _input_event(event):
+	if (event.is_pressed() and event.is_action(\"ui_accept\")):
+		get_tree().set_input_as_handled()
+		do_input()
+
+func redraw_options():
+	clear()
+	for i in button_order:
+		add_option(i, buttons[i])
+	set_selected(selected_button)
+
+func add_option(name, value):
+	add_button(\"%-15s%5s\" % [name, value])
+
+func update_position():
+	var current_size = get_size()
+	current_size.x += 50
+	set_size(current_size)
+	var current_pos = get_pos()
+	set_pos(Vector2(-current_size.x * 0.5, current_pos.y))
+
+func _on_optionsbuttons_button_selected( button_idx ):
+	selected_button = button_idx
+"
+
+[node name="ModeMenu" type="Control"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = -40.0
+margin/bottom = -40.0
+script/script = SubResource( 4 )
+
+[node name="Panel" type="Panel" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -960.0
+margin/top = -540.0
+margin/right = -920.0
+margin/bottom = -500.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="options-buttons" type="VButtonArray" parent="."]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 311.5
+margin/top = 560.0
+margin/right = -271.5
+margin/bottom = -520.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/selected = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font_selected = ExtResource( 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_constants/button_separator = 100
+flat = false
+button/count = 3
+button/min_button_size = 100.0
+button/align = 1
+button/0/text = "Fullscreen"
+button/0/tooltip = ""
+button/0/icon = null
+button/1/text = "Volume"
+button/1/tooltip = ""
+button/1/icon = null
+button/2/text = "Change keys"
+button/2/tooltip = ""
+button/2/icon = null
+button/selected = 0
+script/script = SubResource( 5 )
+
+[connection signal="button_selected" from="options-buttons" to="options-buttons" method="_on_optionsbuttons_button_selected"]
+
+

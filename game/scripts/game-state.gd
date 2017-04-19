@@ -40,6 +40,12 @@ func reset():
 	current_level_index = 0
 	winning_team_index = 0
 	maximum_score = 0
+	InputMap.load_from_globals()
+	
+	for joystick in Input.get_connected_joysticks():
+		build_gui_action_list(["Gamepad", joystick])
+	build_gui_action_list(["Keyboard", 0])
+	print(InputMap.get_action_list("ui_accept"))
 
 func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
