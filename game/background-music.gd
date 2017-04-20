@@ -9,18 +9,21 @@ var volume_fading = false
 var volume_fading_direction = 0
 var volume_fading_amount = DEFAULT_VOL_FADE_SPEED
 
+var master_volume = 1.0
+
 var volume_state_machine
 
 const DEFAULT_VOL_FADE_SPEED = 0.1
 
 func _ready():
+	set_master_volume(GameSettings.main_settings["volume"])
 	randomize()
 	build_song_list()
 	setup_state_machine()
 	
 	target_volume = 0
 	current_volume = 0
-	set_volume(current_volume)
+	change_volume(current_volume)
 	
 	fade_volume(0.25, 0.5)
 
@@ -89,7 +92,7 @@ func on_volume_state_changed(state_from, state_to, args):
 	if (state_to == "default"):
 		volume_fading = false
 		current_volume = target_volume
-		set_volume(current_volume)
+		change_volume(current_volume)
 	elif (state_to == "fading"):
 		volume_fading = true
 
@@ -97,7 +100,13 @@ func _fixed_process(delta):
 	volume_state_machine.process(delta)
 	if (volume_fading):
 		current_volume += volume_fading_direction * volume_fading_amount * delta
-		set_volume(current_volume)
+	change_volume(current_volume)
 
 func _on_BackgroundMusic_finished():
 	play_next_song()
+
+func change_volume(new_volume):
+	set_volume(new_volume * master_volume)
+
+func set_master_volume(new_volume):
+	master_volume = new_volume * 0.01

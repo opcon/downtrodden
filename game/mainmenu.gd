@@ -26,16 +26,19 @@ func do_input():
 	elif (selected_button == OPTIONS_BUTTON):
 		GameState.goto_scene("options.tscn")
 	elif (selected_button == QUIT_BUTTON):
-		get_tree().quit()
+		GameState.quit_game()
 	
 
 func _input_event(event):
-	if (event.type == InputEvent.MOUSE_BUTTON and event.button_index == BUTTON_LEFT and event.is_pressed()):
-		pending_input = true
-		get_tree().set_input_as_handled()
-	if (event.is_action("ui_accept") and event.is_pressed()):
-		get_tree().set_input_as_handled()
-		do_input()
+	if (event.is_pressed()):
+		if (event.is_action("ui_accept")):
+			get_tree().set_input_as_handled()
+			do_input()
+		if (event.is_action("ui_cancel")):
+			get_tree().set_input_as_handled()
+			selected_button = QUIT_BUTTON
+			set_selected(QUIT_BUTTON)
+			do_input()
 
 func _on_MainMenuButtons_button_selected( button_idx ):
 	selected_button = button_idx

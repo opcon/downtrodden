@@ -32,9 +32,6 @@ func do_input():
 	
 
 func _input_event(event):
-	if (event.type == InputEvent.MOUSE_BUTTON and event.button_index == BUTTON_LEFT and event.is_pressed()):
-		pending_input = true
-		get_tree().set_input_as_handled()
 	if (event.is_action("ui_accept") and event.is_pressed()):
 		get_tree().set_input_as_handled()
 		do_input()

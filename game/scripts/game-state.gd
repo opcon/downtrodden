@@ -29,6 +29,8 @@ var winning_team_index = 0
 func _ready():
 	var root = get_tree().get_root()
 	currentScene = root.get_child(root.get_child_count() - 1)
+	# Set fullscreen if needed
+	OS.set_window_fullscreen(GameSettings.main_settings["fullscreen"])
 	reset()
 
 func reset():
@@ -45,7 +47,6 @@ func reset():
 	for joystick in Input.get_connected_joysticks():
 		build_gui_action_list(["Gamepad", joystick])
 	build_gui_action_list(["Keyboard", 0])
-	print(InputMap.get_action_list("ui_accept"))
 
 func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
@@ -94,7 +95,6 @@ func start_game(level_name):
 			player.base_colour = GameState.base_colours[i]
 			player.set_name("Player" + str(i*players_per_team+j+1))
 			player.add_to_group("players")
-			print("Adding input for player " + str(i*players_per_team+j) + ", input method is " + str(player_input_methods[i*players_per_team+j]))
 			build_action_list(player.index, player_input_methods[i*players_per_team+j])
 			game_scene.add_child(player)
 		#game_scene.get_node("score").get_node("player" + str(i+1)).show()
@@ -126,10 +126,10 @@ func build_action_list(player_id, input_method):
 		right_event.device = input_method[1]
 		jetpack_event.device = input_method[1]
 		
-		jump_event.scancode = KEY_W
-		left_event.scancode = KEY_A
-		right_event.scancode = KEY_D
-		jetpack_event.scancode = KEY_SPACE
+		jump_event.scancode = GameSettings.keyboard_mapping["jump"]
+		left_event.scancode = GameSettings.keyboard_mapping["left"]
+		right_event.scancode = GameSettings.keyboard_mapping["right"]
+		jetpack_event.scancode = GameSettings.keyboard_mapping["jetpack"]
 		
 	elif (input_method[0] == "Gamepad"):
 		jump_event.type = InputEvent.JOYSTICK_BUTTON
@@ -215,7 +215,6 @@ func erase_and_add_action(action, event):
 
 func add_event_to_action(action, event):
 	if (InputMap.action_has_event(action, event)): return
-	print("Adding event %s to action %s" % [event, action])
 	InputMap.action_add_event(action, event)
 
 func goto_menu():
@@ -230,3 +229,9 @@ func goto_next_level():
 func ensure_ui_actions():
 	for input in player_input_methods:
 		build_gui_action_list(input)
+
+func quit_game():
+	# Save settings
+	GameSettings.save_config()
+	# Then quit game
+	get_tree().quit()

@@ -1,6 +1,7 @@
 extends Control
 
-var keyboard_mappings = {"left":KEY_A, "right":KEY_D, "jump":KEY_W, "jetpack":KEY_SPACE}
+#var keyboard_mappings = {"left":KEY_A, "right":KEY_D, "jump":KEY_W, "jetpack":KEY_SPACE}
+var keyboard_mappings = GameSettings.keyboard_mapping
 var current_mapping = -1
 var mapping_indicies = keyboard_mappings.keys()
 
