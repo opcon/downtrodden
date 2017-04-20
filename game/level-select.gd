@@ -33,7 +33,7 @@ func _input(event):
 			var shuffled_index = shuffled_levels.find(level_list[selected_index])
 			GameState.level_list = shuffled_levels
 			GameState.current_level_index = shuffled_index
-			GameState.maximum_score = 2
+			GameState.maximum_score = 7
 			GameState.call_deferred("start_game", level_list[selected_index])
 		elif (event.is_action("ui_up")):
 			selected_index = (selected_index - 1) % level_list.size()

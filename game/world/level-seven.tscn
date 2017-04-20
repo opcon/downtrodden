@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://world/world-boundaries.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/building-block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/spawn.tscn" type="PackedScene" id=3]
+
+[node name="level" type="Node2D"]
+
+[node name="background" type="Polygon2D" parent="."]
+
+transform/pos = Vector2( 0, -0.902496 )
+z/z = -15
+polygon = Vector2Array( 0, 0, 1920, 0, 1920, 1080, 0, 1080 )
+uv = Vector2Array(  )
+color = Color( 0.132111, 0.132111, 0.152344, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="boundaries" parent="." instance=ExtResource( 1 )]
+
+[node name="platforms" type="Node2D" parent="."]
+
+[node name="StaticBody2D 2" parent="platforms" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 540, 350 )
+transform/rot = -30.0
+transform/scale = Vector2( 4, 1 )
+
+[node name="StaticBody2D4" parent="platforms" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 600, 740 )
+transform/rot = -30.0
+transform/scale = Vector2( 4, 1 )
+
+[node name="StaticBody2D3" parent="platforms" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 1380, 350 )
+transform/rot = 30.0
+transform/scale = Vector2( 4, 1 )
+
+[node name="StaticBody2D5" parent="platforms" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 1340, 740 )
+transform/rot = 30.0
+transform/scale = Vector2( 4, 1 )
+
+[node name="spawn-points" type="Node2D" parent="."]
+
+[node name="spawn" parent="spawn-points" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 173.956, 470.716 )
+
+[node name="spawn1" parent="spawn-points" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1721.07, 494.774 )
+
+[node name="spawn2" parent="spawn-points" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 636.611, 213.48 )
+
+[node name="spawn3" parent="spawn-points" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1321.34, 217.181 )
+
+
