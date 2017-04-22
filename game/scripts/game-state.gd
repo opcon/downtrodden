@@ -19,7 +19,7 @@ var currentScene = null
 var currentGameMode = GameMode.None
 var number_of_players = 0
 var number_of_teams = 0
-var maximum_score = 0
+var maximum_score = 7
 
 var player_input_methods = []
 var level_list = []
@@ -42,7 +42,6 @@ func reset():
 	level_list = []
 	current_level_index = 0
 	winning_team_index = 0
-	maximum_score = 0
 	InputMap.load_from_globals()
 	
 	for joystick in Input.get_connected_joysticks():
