@@ -7,11 +7,14 @@ const FREE_FOR_ALL = 2
 var selected_button = 0;
 var pending_input = false;
 
+var colour_index = randi() % GameState.base_colours.size()
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	grab_focus()
 	selected_button = get_selected()
+	_on_MainMenuButtons_button_selected(selected_button)
 	set_process(true)
 
 func _process(delta):
@@ -38,3 +41,5 @@ func _input_event(event):
 
 func _on_MainMenuButtons_button_selected( button_idx ):
 	selected_button = button_idx
+	set("custom_colors/font_color_selected", GameState.base_colours[colour_index])
+	colour_index = (colour_index + 1) % GameState.base_colours.size()

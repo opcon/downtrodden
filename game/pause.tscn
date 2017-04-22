@@ -6,14 +6,14 @@
 
 font_path = "res://fonts/RubikMonoOne-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 
 font/size = 90
 font/use_mipmaps = false
 font/use_filter = false
 font/font = SubResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=3]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -26,14 +26,14 @@ border_size = 5
 border_blend = true
 draw_bg = false
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=4]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=5]
 
 font/size = 62
 font/use_mipmaps = false
@@ -61,7 +61,7 @@ margin/left = -960.0
 margin/top = -540.0
 margin/right = 960.0
 margin/bottom = -428.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Paused"
 align = 1
 percent_visible = 1.0
@@ -74,7 +74,7 @@ anchor/left = 3
 anchor/top = 3
 anchor/right = 3
 anchor/bottom = 3
-focus/ignore_mouse = false
+focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
@@ -82,11 +82,11 @@ margin/left = 249.0
 margin/top = 170.0
 margin/right = -209.0
 margin/bottom = -130.0
-custom_styles/hover = SubResource( 6 )
-custom_styles/selected = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font_selected = SubResource( 8 )
-custom_fonts/font = SubResource( 8 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/selected = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font_selected = SubResource( 5 )
+custom_fonts/font = SubResource( 5 )
 custom_constants/button_separator = 100
 flat = false
 button/count = 2

@@ -13,6 +13,8 @@ var current_player_number = 0
 
 var player_input_methods = []
 
+var default_label_colour = Color(0.690196,0.690196,0.690196)
+
 func _ready():
 	set_process_input(true)
 	GameState.update_game_mode()
@@ -62,7 +64,7 @@ func remove_player_input(type, device):
 			current_player_number = players_per_team - 1
 			current_team_number -= 1
 		if (current_player_number == 0):	
-			player_numbers[current_team_number].set("custom_colors/font_color", Color(1, 1, 1))
+			player_numbers[current_team_number].set("custom_colors/font_color", default_label_colour)
 			player_numbers[current_team_number].get_node("controllerlabel" + str(current_team_number+1)).hide()
 		else:
 			var controllerlabel = player_numbers[current_team_number].get_node("controllerlabel" + str(current_team_number+1))

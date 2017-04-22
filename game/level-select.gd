@@ -7,6 +7,8 @@ onready var prev_node = get_node("prev-level")
 onready var curr_node = get_node("current-level")
 onready var next_node = get_node("next-level")
 
+var colour_index = randi() % GameState.base_colours.size()
+
 func _ready():
 	set_process_input(true)
 	build_level_list()
@@ -29,12 +31,10 @@ func _input(event):
 		if (event.is_action("ui_accept")):
 			get_tree().set_input_as_handled()
 			var shuffled_levels = Utilities.shuffle_array(level_list)
-			print(shuffled_levels)
 			var shuffled_index = shuffled_levels.find(level_list[selected_index])
 			GameState.level_list = shuffled_levels
 			GameState.current_level_index = shuffled_index
-			GameState.maximum_score = 7
-			GameState.call_deferred("start_game", level_list[selected_index])
+			GameState.goto_scene("set-goal.tscn")
 		elif (event.is_action("ui_up")):
 			selected_index = (selected_index - 1) % level_list.size()
 			update_labels()
@@ -50,7 +50,8 @@ func update_labels():
 	next_node.set_text(format_level_name(level_list[(selected_index + 1) % level_list.size()]))
 	curr_node.set_text(format_level_name(level_list[selected_index]))
 	
-	print(curr_node.get_rect())
+	curr_node.set("custom_colors/font_color", GameState.base_colours[colour_index])
+	colour_index = (colour_index + 1) % GameState.base_colours.size()
 
 func format_level_name(unformatted_name):
 	var full_name = unformatted_name.right("level-".length())
