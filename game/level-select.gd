@@ -22,8 +22,11 @@ func build_level_list():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while (file_name != ""):
-			if (not dir.current_is_dir() and file_name.extension() == "tscn" and file_name.find("level") >= 0):
-				level_list.append(file_name.basename())
+			if (not dir.current_is_dir()):
+				if (file_name.extension() == "tscn" and file_name.find("level") >= 0):
+					level_list.append(file_name.basename())
+				elif (file_name.extension() == "scn" and file_name.find("level") >= 0):
+					level_list.append(file_name.substr(0, file_name.find("tscn") - 1))
 			file_name = dir.get_next()
 
 func _input(event):

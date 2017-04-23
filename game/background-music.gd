@@ -1,7 +1,7 @@
 extends StreamPlayer
 
 var music_files = []
-var recognized_extensions = ResourceLoader.get_recognized_extensions_for_type("AudioStream")
+var recognized_extensions = Array(ResourceLoader.get_recognized_extensions_for_type("AudioStream"))
 var current_index = -1
 var target_volume
 var current_volume
@@ -16,6 +16,10 @@ var volume_state_machine
 const DEFAULT_VOL_FADE_SPEED = 0.1
 
 func _ready():
+	initialize()
+	pass
+	
+func initialize():
 	set_master_volume(GameSettings.main_settings["volume"])
 	randomize()
 	build_song_list()
@@ -40,10 +44,10 @@ func build_song_list():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while (file_name != ""):
-			if (not dir.current_is_dir() and file_name.extension() in recognized_extensions):
-				music_files.append(dir.get_current_dir() + "/" + file_name)
+			if (not dir.current_is_dir()):
+				if(recognized_extensions.has(file_name.extension())):
+					music_files.append("res://music" + "/" + file_name)
 			file_name = dir.get_next()
-	
 	# Shuffle music files list
 	var shuffled = []
 	var indexList = range(music_files.size())
