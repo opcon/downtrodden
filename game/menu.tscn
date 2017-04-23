@@ -1,40 +1,30 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
 [ext_resource path="res://main-background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fonts/Rubik.tres" type="DynamicFont" id=3]
 [ext_resource path="res://mainmenu.gd" type="Script" id=4]
-[ext_resource path="res://fonts/subheading.tres" type="DynamicFont" id=5]
-[ext_resource path="res://fonts/MontserratAlternates-Bold.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=1]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=2]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-
-[sub_resource type="DynamicFont" id=3]
-
-font/size = 48
-extra_spacing/char = 10
-font/use_mipmaps = true
-font/use_filter = false
-font/font = ExtResource( 6 )
 
 [node name="MainMenu" type="Control"]
 
@@ -68,9 +58,9 @@ margin/left = 249.0
 margin/top = 560.0
 margin/right = -209.0
 margin/bottom = -520.0
-custom_styles/focus = SubResource( 6 )
-custom_styles/selected = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/selected = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font_selected = ExtResource( 3 )
 custom_fonts/font = ExtResource( 3 )
 custom_constants/button_separator = 100
@@ -89,40 +79,6 @@ button/2/tooltip = ""
 button/2/icon = null
 button/selected = 0
 script/script = ExtResource( 4 )
-
-[node name="Title" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -940.0
-margin/top = 470.0
-margin/right = -581.0
-margin/bottom = 530.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color = Color( 1, 1, 1, 0.3 )
-text = "DownTrodden"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Credit" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 773.0
-margin/top = 470.0
-margin/right = 940.0
-margin/bottom = 530.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 0.3 )
-text = "PTRK"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [connection signal="button_selected" from="MainMenuButtons" to="MainMenuButtons" method="_on_MainMenuButtons_button_selected"]
 
