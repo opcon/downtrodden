@@ -4,6 +4,7 @@ onready var players = get_tree().get_nodes_in_group("player")
 onready var pause_overlay = get_node("pause-overlay")
 
 var game_finished = false
+var paused = false
 
 func _ready():
 	set_process_input(true)
@@ -36,6 +37,7 @@ func show_endgame_scene():
 	pause_overlay.add_child(sc)
 
 func pause_game(owner_type, owner_device):
+	paused = true
 	get_tree().set_pause(true)
 	disable_player_input()
 	pause_overlay.show()
@@ -45,15 +47,17 @@ func pause_game(owner_type, owner_device):
 	sc.get_node("pause-buttons").owner_device = owner_device
 
 func unpause_game():
+	paused = false
 	get_tree().set_pause(false)
 	enable_player_input()
 	pause_overlay.hide()
 	pause_overlay.remove_child(pause_overlay.get_children()[-1])
 
 func _on_gamepad_connection_changed(index, connected):
-	if (not connected and index in GameState.current_device_indicies): show_controller_disconnected_overlay(index)
+	if (not paused and not connected and index in GameState.current_device_indicies): show_controller_disconnected_overlay(index)
 
 func show_controller_disconnected_overlay(controller_index):
+	paused = true
 	get_tree().set_pause(true)
 	disable_player_input()
 	pause_overlay.show()
@@ -63,6 +67,7 @@ func show_controller_disconnected_overlay(controller_index):
 	sc.get_node("controller-message").set_text("Controller %s disconnected" % (controller_index + 1))
 
 func hide_controller_disconnected_overlay():
+	paused = false
 	pause_overlay.hide()
 	pause_overlay.remove_child(pause_overlay.get_children()[-1])
 	get_tree().set_pause(false)

@@ -9,10 +9,13 @@ var pending_input = false;
 var owner_type
 var owner_device
 
+var disconnected = false
+
 func _ready():
 	selected_button = get_selected()
 	call_deferred("set_process", true)
 	call_deferred("grab_focus")
+	Input.connect("joy_connection_changed", self, "_on_gamepad_connection_changed")
 
 func _process(delta):
 	if (pending_input):
@@ -25,10 +28,9 @@ func do_input():
 	elif (selected_button == QUIT_BUTTON):
 		get_parent().get_parent().get_parent().unpause_game()
 		GameState.goto_menu()
-	
 
 func _input_event(event):
-	if (event.is_pressed() and event.type == owner_type && event.device == owner_device):
+	if (event.is_pressed() and (event.type == owner_type && event.device == owner_device) or disconnected):
 		if (event.is_action("ui_accept")):
 			get_tree().set_input_as_handled()
 			do_input()
@@ -40,3 +42,6 @@ func _input_event(event):
 
 func _on_VButtonArray_button_selected( button_idx ):
 	selected_button = button_idx
+
+func _on_gamepad_connection_changed(index, connected):
+	if (index == owner_device): disconnected = not connected
