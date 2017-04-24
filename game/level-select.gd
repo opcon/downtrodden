@@ -28,6 +28,7 @@ func build_level_list():
 				elif (file_name.extension() == "scn" and file_name.find("level") >= 0):
 					level_list.append(file_name.substr(0, file_name.find("tscn") - 1))
 			file_name = dir.get_next()
+	level_list.sort_custom(self, "compare_two_level_names")
 
 func _input(event):
 	if (event.is_pressed()):
@@ -62,4 +63,9 @@ func format_level_name(unformatted_name):
 	var joined = split[0]
 	for i in range(split.size() - 1):
 		joined += " " + split[i+1]
-	return joined
+	return joined	
+
+func compare_two_level_names(level1, level2):
+	var n1 = Utilities.word_to_number(format_level_name(level1))
+	var n2 = Utilities.word_to_number(format_level_name(level2))
+	return n1 < n2
