@@ -22,6 +22,7 @@ var number_of_teams = 0
 var maximum_score = 7
 
 var player_input_methods = []
+var current_device_indicies = []
 var level_list = []
 var current_level_index = 0
 
@@ -32,6 +33,8 @@ func _ready():
 	currentScene = root.get_child(root.get_child_count() - 1)
 	# Set fullscreen if needed
 	OS.set_window_fullscreen(GameSettings.main_settings["fullscreen"])
+	# Handle controller disconnected signal
+	Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
 	reset()
 
 func reset():
@@ -39,6 +42,7 @@ func reset():
 	number_of_players = 0
 	number_of_teams = 0
 	player_input_methods = []
+	current_device_indicies = []
 	level_list = []
 	current_level_index = 0
 	winning_team_index = 0
@@ -96,6 +100,7 @@ func start_game(level_name):
 			player.set_name("Player" + str(i*players_per_team+j+1))
 			player.add_to_group("players")
 			build_action_list(player.index, player_input_methods[i*players_per_team+j])
+			current_device_indicies.append(player_input_methods[i*players_per_team + j][1])
 			game_scene.add_child(player)
 		#game_scene.get_node("score").get_node("player" + str(i+1)).show()
 	
@@ -109,6 +114,8 @@ func start_game(level_name):
 	
 	# Fade in music
 	BackgroundMusic.fade_volume(1, 0.5)
+	
+	print(current_device_indicies)
 
 func build_action_list(player_id, input_method):
 	var jump_event = InputEvent()
@@ -235,3 +242,8 @@ func quit_game():
 	GameSettings.save_config()
 	# Then quit game
 	get_tree().quit()
+
+func _on_joy_connection_changed(index, connected):
+	if connected:
+		print("Building gui input list for device %s" % index)
+		build_gui_action_list(["Gamepad", index])

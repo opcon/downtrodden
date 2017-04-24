@@ -6,6 +6,9 @@ const QUIT_BUTTON = 1
 var selected_button = 0;
 var pending_input = false;
 
+var owner_type
+var owner_device
+
 func _ready():
 	selected_button = get_selected()
 	call_deferred("set_process", true)
@@ -25,10 +28,7 @@ func do_input():
 	
 
 func _input_event(event):
-	if (event.is_pressed()):
-		if (event.type == InputEvent.MOUSE_BUTTON and event.button_index == BUTTON_LEFT):
-			pending_input = true
-			get_tree().set_input_as_handled()
+	if (event.is_pressed() and event.type == owner_type && event.device == owner_device):
 		if (event.is_action("ui_accept")):
 			get_tree().set_input_as_handled()
 			do_input()

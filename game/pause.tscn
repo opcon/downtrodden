@@ -68,7 +68,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="VButtonArray" type="VButtonArray" parent="."]
+[node name="pause-buttons" type="VButtonArray" parent="."]
 
 anchor/left = 3
 anchor/top = 3
@@ -101,6 +101,6 @@ button/1/icon = null
 button/selected = 0
 script/script = ExtResource( 1 )
 
-[connection signal="button_selected" from="VButtonArray" to="VButtonArray" method="_on_VButtonArray_button_selected"]
+[connection signal="button_selected" from="pause-buttons" to="pause-buttons" method="_on_VButtonArray_button_selected"]
 
 
