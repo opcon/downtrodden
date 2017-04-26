@@ -20,6 +20,8 @@ upload_paths = {
 version_file_path = './version.txt'
 
 def push_build(platform):
+    # Clean export folder
+    subprocess.check_call(['make', 'clean'])
     # Make the platform
     subprocess.check_call(['make', platform])
     # Call butler on the directory
