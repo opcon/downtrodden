@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://pause-game.gd" type="Script" id=1]
 
@@ -13,27 +13,34 @@ font/use_mipmaps = false
 font/use_filter = false
 font/font = SubResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxFlat" id=4]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 bg_color = Color( 1, 1, 1, 0 )
-light_color = Color( 1, 1, 1, 1 )
-dark_color = Color( 1, 1, 1, 1 )
-border_size = 5
+light_color = Color( 1, 1, 1, 0 )
+dark_color = Color( 1, 1, 1, 0 )
+border_size = 0
 border_blend = true
 draw_bg = false
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=5]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 
 font/size = 62
 font/use_mipmaps = false
@@ -82,11 +89,11 @@ margin/left = 249.0
 margin/top = 170.0
 margin/right = -209.0
 margin/bottom = -130.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/selected = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-custom_fonts/font_selected = SubResource( 5 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/selected = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font_selected = SubResource( 6 )
+custom_fonts/font = SubResource( 6 )
 custom_constants/button_separator = 100
 flat = false
 button/count = 2

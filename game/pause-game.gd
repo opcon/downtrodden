@@ -11,8 +11,10 @@ var owner_device
 
 var disconnected = false
 
+var colour_index = randi() % GameState.base_colours.size()
+
 func _ready():
-	selected_button = get_selected()
+	_on_VButtonArray_button_selected(selected_button)
 	call_deferred("set_process", true)
 	call_deferred("grab_focus")
 	Input.connect("joy_connection_changed", self, "_on_gamepad_connection_changed")
@@ -42,6 +44,8 @@ func _input_event(event):
 
 func _on_VButtonArray_button_selected( button_idx ):
 	selected_button = button_idx
+	set("custom_colors/font_color_selected", GameState.base_colours[colour_index])
+	colour_index = (colour_index + 1) % GameState.base_colours.size()
 
 func _on_gamepad_connection_changed(index, connected):
 	if (index == owner_device): disconnected = not connected

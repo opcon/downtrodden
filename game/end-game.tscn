@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://end-game.gd" type="Script" id=1]
 
@@ -19,7 +19,15 @@ script/source = "extends Label
 
 func _ready():
 	var start = \"Player\" if GameState.number_of_players <= GameState.number_of_teams else \"Team\"
-	set_text(\"%s %s wins!\" % [start, GameState.winning_team_index + 1])"
+	set_text(\"%s %s wins!\" % [start, GameState.winning_team_index + 1])
+	set(\"custom_colors/font_color\", GameState.base_colours[GameState.winning_team_index])"
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
 
 [sub_resource type="StyleBoxFlat" id=4]
 
@@ -28,9 +36,9 @@ content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 bg_color = Color( 1, 1, 1, 0 )
-light_color = Color( 1, 1, 1, 1 )
-dark_color = Color( 1, 1, 1, 1 )
-border_size = 5
+light_color = Color( 1, 1, 1, 0 )
+dark_color = Color( 1, 1, 1, 0 )
+border_size = 0
 border_blend = true
 draw_bg = false
 
@@ -91,7 +99,7 @@ margin/left = 249.0
 margin/top = 272.0
 margin/right = -209.0
 margin/bottom = -232.0
-custom_styles/hover = SubResource( 4 )
+custom_styles/focus = SubResource( 7 )
 custom_styles/selected = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font_selected = SubResource( 6 )

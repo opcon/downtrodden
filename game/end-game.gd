@@ -7,8 +7,10 @@ const QUIT_BUTTON = 2
 var selected_button = 0;
 var pending_input = false;
 
+var colour_index = randi() % GameState.base_colours.size()
+
 func _ready():
-	pass
+	_on_VButtonArray_button_selected(selected_button)
 
 func _process(delta):
 	if (pending_input):
@@ -22,18 +24,16 @@ func do_input():
 		GameState.call_deferred("start_game", GameState.level_list[GameState.current_level_index])
 	elif (selected_button == QUIT_BUTTON):
 		GameState.goto_menu()
-	
 
 func _input_event(event):
-	if (event.type == InputEvent.MOUSE_BUTTON and event.button_index == BUTTON_LEFT and event.is_pressed()):
-		pending_input = true
-		get_tree().set_input_as_handled()
 	if (event.is_action("ui_accept") and event.is_pressed()):
 		get_tree().set_input_as_handled()
 		do_input()
 
 func _on_VButtonArray_button_selected( button_idx ):
 	selected_button = button_idx
+	set("custom_colors/font_color_selected", GameState.base_colours[colour_index])
+	colour_index = (colour_index + 1) % GameState.base_colours.size()
 
 
 func _on_Timer_timeout():
