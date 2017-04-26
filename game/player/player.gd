@@ -57,7 +57,7 @@ func _integrate_forces(state):
 	var floor_index = -1
 	for x in range(state.get_contact_count()):
 		var ci = state.get_contact_local_normal(x)
-		if (ci.dot(Vector2(0, -1)) > 0.99): # Collided below us
+		if (ci.dot(Vector2(0, -1)) > 0.6): # Collided below us
 			found_floor = true
 			floor_timer = 0
 			floor_index = x
