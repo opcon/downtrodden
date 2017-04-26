@@ -19,6 +19,7 @@ var health_state_machine
 var jetpack_state_machine
 
 var alive = true
+var invincible
 var jetpacking = false
 var found_floor = false
 var jetpack_recharging = false
@@ -56,19 +57,22 @@ func _integrate_forces(state):
 	var floor_index = -1
 	for x in range(state.get_contact_count()):
 		var ci = state.get_contact_local_normal(x)
-		if (ci.dot(Vector2(0, -1)) > 0.6):
+		if (ci.dot(Vector2(0, -1)) > 0.99): # Collided below us
 			found_floor = true
 			floor_timer = 0
 			floor_index = x
 			var cobject = state.get_contact_collider_object(x)
-			if (cobject.is_in_group("player") and cobject.team != team):
+			if (cobject.is_in_group("player") and cobject.team != team and not cobject.invincible):
+				# Give us the bounce
 				lv.y -= JUMP_SPEED
-		if (ci.dot(Vector2(0,1)) > 0.6):
+				# Kill player we collided with, if they are not already dead
+				cobject.die(team)
+		if (ci.dot(Vector2(0,1)) > 0.99): # Collided above us
 			not_colliding_top = false;
 			var cobject = state.get_contact_collider_object(x)
 			if (cobject.is_in_group("player") and cobject.team != team):
-				last_collided_team = cobject.team
-				alive = false
+				# If we collided with a player above us, we are dead
+				die(cobject.team)
 				return
 		else:
 			collision_normal = ci
@@ -153,8 +157,10 @@ func _ready():
 	health_state_machine = fsm_resource.new()
 	health_state_machine.add_state("alive")
 	health_state_machine.add_state("dead")
+	health_state_machine.add_state("invincible")
 	health_state_machine.add_link("alive", "dead", "condition", [self, "is_alive", false])
-	health_state_machine.add_link("dead", "alive", "timeout", [3])
+	health_state_machine.add_link("dead", "invincible", "timeout", [3])
+	health_state_machine.add_link("invincible", "alive", "timeout", [1])
 	health_state_machine.set_state("alive")
 	health_state_machine.connect("state_changed",self,"on_health_state_changed")
 	
@@ -199,11 +205,21 @@ func move_to_spawn():
 func is_alive():
 	return alive
 
+func die(killer_team):
+	if (not alive or invincible):
+		return
+	last_collided_team = killer_team
+	alive = false
+
 func on_health_state_changed(state_from, state_to, args):
-	if (state_to == "alive"):
+	if (state_to == "invincible"):
 		alive = true
+		invincible = true
 		move_to_spawn()
+		get_node("AnimationPlayer").play("blink-player")
 		enable()
+	elif (state_to == "alive"):
+		invincible = false
 	elif (state_to == "dead"):
 		alive = false
 		jetpack_fuel = MAX_JETPACK_FUEL
