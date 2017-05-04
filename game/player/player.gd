@@ -1,15 +1,15 @@
 extends RigidBody2D
 
-const JUMP_SPEED = 300
+const JUMP_SPEED = 550
 const MAX_WALLJUMPS = 5
-const MAX_JETPACK_SPEED = 700
-const JETPACK_ACCEL = 2500
+const MAX_JETPACK_SPEED = 600
+const JETPACK_ACCEL = 4000
 const MAX_JETPACK_FUEL = 150
 const JETPACK_FUEL_DELTA = 50
 const JETPACK_REFUEL_BONUS = 2
-const MAX_MOVE_SPEED = 800
-const MOVE_ACCEL = 5000
-const MOVE_DECEL = 5000
+const MAX_MOVE_SPEED = 1000
+const MOVE_ACCEL = 7000
+const MOVE_DECEL = 7000
 const MAX_EXTRA_SCALE = 0.1
 const SCALE_ACCEL = 0.4
 const SCALE_DECEL = 0.4
@@ -117,8 +117,8 @@ func _integrate_forces(state):
 			lv.y -= JUMP_SPEED
 		elif (state.get_contact_count() > 0 and not_colliding_top and walljumps_remaining > 0):
 			walljumps_remaining -= 1
-			lv.y = -3*JUMP_SPEED
-			lv.x = collision_normal.x * JUMP_SPEED*3
+			lv.y = -2*JUMP_SPEED
+			lv.x = collision_normal.x * JUMP_SPEED*2
 			
 	var p2d = get_node("base-square")
 	var cs2d = get_node("player-collision")
@@ -170,7 +170,7 @@ func _ready():
 	jetpack_state_machine.add_state("recharging")
 	jetpack_state_machine.add_state("warming-up")
 	jetpack_state_machine.add_link("depleting", "warming-up", "condition", [self, "should_recharge_jetpack", true])
-	jetpack_state_machine.add_link("warming-up", "recharging", "timeout", [1])
+	jetpack_state_machine.add_link("warming-up", "recharging", "timeout", [0.8])
 	jetpack_state_machine.add_link("warming-up", "depleting", "condition", [self, "should_stop_recharging_jetpack", true])
 	jetpack_state_machine.add_link("recharging", "depleting", "condition", [self, "should_stop_recharging_jetpack", true])
 	jetpack_state_machine.set_state("depleting")
