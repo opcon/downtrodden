@@ -1,0 +1,40 @@
+[application]
+
+icon = "res://icon.png"
+main_scene = "res://menu.tscn"
+name = "DownTrodden"
+
+[autoload]
+
+BackgroundMusic = "*res://background-music.tscn"
+GameSettings = "*res://scripts/game-settings.gd"
+GameState = "*res://scripts/game-state.gd"
+Utilities = "*res://scripts/utilities.gd"
+
+[debug]
+
+stdout/print_fps = true
+
+[display]
+
+stretch/aspect = "keep"
+stretch/mode = "2d"
+window/height = 1080
+window/width = 1920
+
+[input]
+
+jetpack0 = [ InputEvent(JBUTTON,5), InputEvent(JAXIS,7,1) ]
+jetpack1 = [ InputEvent(JBUTTON,5), InputEvent(JAXIS,7,1) ]
+move_left0 = [ InputEvent(KEY,65), InputEvent(JAXIS,0,-1) ]
+move_left1 = [ InputEvent(KEY,16777231), InputEvent(JAXIS,0,-1) ]
+move_right0 = [ InputEvent(KEY,68), InputEvent(JAXIS,0,1) ]
+move_right1 = [ InputEvent(KEY,16777233), InputEvent(JAXIS,0,1) ]
+move_up0 = [ InputEvent(KEY,87), InputEvent(JBUTTON,0) ]
+move_up1 = [ InputEvent(KEY,16777232), InputEvent(JBUTTON,0) ]
+pause = [  ]
+ui_down = [ InputEvent(KEY,16777234) ]
+ui_left = [ InputEvent(KEY,16777231) ]
+ui_right = [ InputEvent(KEY,16777233) ]
+ui_up = [ InputEvent(KEY,16777232) ]
+

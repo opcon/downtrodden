@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://score.gd" type="Script" id=2]
@@ -7,10 +7,10 @@
 
 [sub_resource type="StyleBoxFlat" id=1]
 
-content_margin/left = -1.0
-content_margin/right = -1.0
-content_margin/top = -1.0
-content_margin/bottom = -1.0
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
 bg_color = Color( 0.132111, 0.132111, 0.152344, 0.85 )
 light_color = Color( 0, 0, 0, 0 )
 dark_color = Color( 0, 0, 0, 0 )
@@ -20,24 +20,24 @@ draw_bg = true
 
 [node name="Node2D" type="Node2D"]
 
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 
 [node name="score" type="Node2D" parent="."]
 
-z/z = 2
-script/script = ExtResource( 2 )
+z = 2
+script = ExtResource( 2 )
 
 [node name="player1" type="Label" parent="score"]
 
-visibility/visible = false
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 75.0
-margin/top = 50.0
-margin/right = 181.0
-margin/bottom = 127.0
+visible = false
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 0
+margin_left = 75.0
+margin_top = 50.0
+margin_right = 181.0
+margin_bottom = 127.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.451172, 0.755798, 0.875, 1 )
 text = "99"
@@ -47,15 +47,15 @@ max_lines_visible = -1
 
 [node name="player2" type="Label" parent="score"]
 
-visibility/visible = false
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 1770.0
-margin/top = 50.0
-margin/right = 1876.0
-margin/bottom = 127.0
+visible = false
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 0
+margin_left = 1770.0
+margin_top = 50.0
+margin_right = 1876.0
+margin_bottom = 127.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0, 0.421875, 1 )
 text = "99"
@@ -65,15 +65,15 @@ max_lines_visible = -1
 
 [node name="player3" type="Label" parent="score"]
 
-visibility/visible = false
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 75.0
-margin/top = 974.0
-margin/right = 181.0
-margin/bottom = 1051.0
+visible = false
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 0
+margin_left = 75.0
+margin_top = 974.0
+margin_right = 181.0
+margin_bottom = 1051.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.9375, 0.539246, 0.300293, 1 )
 text = "99"
@@ -83,15 +83,15 @@ max_lines_visible = -1
 
 [node name="player4" type="Label" parent="score"]
 
-visibility/visible = false
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 1770.0
-margin/top = 974.0
-margin/right = 1876.0
-margin/bottom = 1051.0
+visible = false
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 0
+margin_left = 1770.0
+margin_top = 974.0
+margin_right = 1876.0
+margin_bottom = 1051.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.38443, 0.863281, 0.470474, 1 )
 text = "99"
@@ -101,39 +101,37 @@ max_lines_visible = -1
 
 [node name="scene-management" type="Node2D" parent="."]
 
-script/script = ExtResource( 4 )
+script = ExtResource( 4 )
 
 [node name="pause-overlay" type="Node2D" parent="."]
 
-process/pause_mode = 2
-visibility/visible = false
-z/z = 1
+pause_mode = 2
+visible = false
+z = 1
 
 [node name="Control" type="Control" parent="pause-overlay"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 960.0
-margin/top = 540.0
-margin/right = 1000.0
-margin/bottom = 580.0
+focus_ignore_mouse = false
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 960.0
+margin_top = 540.0
+margin_right = 1000.0
+margin_bottom = 580.0
 
 [node name="Panel" type="Panel" parent="pause-overlay/Control"]
 
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = -960.0
-margin/top = -540.0
-margin/right = -920.0
-margin/bottom = -500.0
+anchor_right = 1
+anchor_bottom = 1
+focus_ignore_mouse = false
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = -960.0
+margin_top = -540.0
+margin_right = -920.0
+margin_bottom = -500.0
 custom_styles/panel = SubResource( 1 )
 
-[connection signal="max_score_reached" from="score" to="." method="_on_score_max_score_reached"]
-
-
+[connection signal="max_score_reached"  from="score"  to="." method="_on_score_max_score_reached" binds=[  ]]
