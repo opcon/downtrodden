@@ -23,9 +23,9 @@ func build_level_list():
 		var file_name = dir.get_next()
 		while (file_name != ""):
 			if (not dir.current_is_dir()):
-				if (file_name.extension() == "tscn" and file_name.find("level") >= 0):
-					level_list.append(file_name.basename())
-				elif (file_name.extension() == "scn" and file_name.find("level") >= 0):
+				if (file_name.get_extension() == "tscn" and file_name.find("level") >= 0):
+					level_list.append(file_name.get_basename())
+				elif (file_name.get_extension() == "scn" and file_name.find("level") >= 0):
 					level_list.append(file_name.substr(0, file_name.find("tscn") - 1))
 			file_name = dir.get_next()
 	level_list.sort_custom(self, "compare_two_level_names")

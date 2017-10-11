@@ -35,13 +35,11 @@ script = ExtResource( 1 )
 
 [node name="Control" parent="." instance=ExtResource( 2 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
+margin_left = 960.0
+margin_top = 540.0
+margin_right = 1000.0
+margin_bottom = 580.0
+_sections_unfolded = [ "Rect" ]
 
 [node name="players" type="Control" parent="."]
 
@@ -73,11 +71,12 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.690196, 0.690196, 0.690196, 1 )
+custom_colors/font_color = Color( 0.459674, 0.459674, 0.459674, 1 )
 text = "1"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="controllerlabel1" type="Label" parent="players/player1"]
 
@@ -115,7 +114,7 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.690196, 0.690196, 0.690196, 1 )
+custom_colors/font_color = Color( 0.459674, 0.459674, 0.459674, 1 )
 text = "2"
 percent_visible = 1.0
 lines_skipped = 0
@@ -157,7 +156,7 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.690196, 0.690196, 0.690196, 1 )
+custom_colors/font_color = Color( 0.459674, 0.459674, 0.459674, 1 )
 text = "3"
 percent_visible = 1.0
 lines_skipped = 0
@@ -199,7 +198,7 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.690196, 0.690196, 0.690196, 1 )
+custom_colors/font_color = Color( 0.459674, 0.459674, 0.459674, 1 )
 text = "4"
 percent_visible = 1.0
 lines_skipped = 0
@@ -247,5 +246,6 @@ align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 

@@ -26,22 +26,22 @@ func _ready():
 	
 	for i in range(GameState.number_of_teams):
 		var controllerlabel = children[i].get_node("controllerlabel" + str(i+1))
-		children[i].set_pos(Vector2(-960 + (interval * i) + (interval) * 0.5, Y_VALUE))
+		children[i].rect_position = Vector2(-960 + (interval * i) + (interval) * 0.5, Y_VALUE)
 		children[i].show()
 		controllerlabel.hide()
-		controllerlabel.set_pos(Vector2(-CONTROLLER_LABEL_WIDTH * 0.5, -Y_VALUE * 2))
+		controllerlabel.rect_position = Vector2(-CONTROLLER_LABEL_WIDTH * 0.5, -Y_VALUE * 2)
 	player_numbers = children
 	
 	players_per_team = GameState.number_of_players / GameState.number_of_teams
 
 func _input(event):
 	if (event.is_pressed()):
-		if (event.type == InputEvent.KEY):
+		if (event is InputEventKey):
 			if (event.scancode == KEY_SPACE):
 				set_player_input("Keyboard", event.device)
 			elif (event.scancode == KEY_ESCAPE):
 				remove_player_input("Keyboard", event.device)
-		elif (event.type == InputEvent.JOYSTICK_BUTTON):
+		elif (event is InputEventJoypadButton):
 			if (event.button_index == JOY_BUTTON_0):
 				set_player_input("Gamepad", event.device)
 			elif (event.button_index == JOY_BUTTON_1):

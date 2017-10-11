@@ -1,25 +1,76 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
-[ext_resource path="res://particle-colour-ramp.tres" type="ColorRamp" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Curve" id=6]
+
+min_value = 3.0
+max_value = 5.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0 ), 0.0, 2.8, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+
+width = 2048
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 20.0
+flatness = 0.0
+gravity = Vector3( 0, 19.6, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 0.0
+angular_velocity = 200.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 55.85
+damping_random = 0.0
+angle = 90.0
+angle_random = 1.0
+scale = 10.0
+scale_random = 0.5
+scale_curve = SubResource( 2 )
+color = Color( 1, 1, 1, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Scale", "Spread", "Trail" ]
+
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 46, 46 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 
-resource_name = "blink-player"
 length = 0.75
 loop = false
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5, 0.63, 0.75 ),
+"times": PoolRealArray( 0, 0.19, 0.25, 0.44, 0.5, 0.7, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true, false, true, false, true ]
@@ -30,9 +81,6 @@ tracks/0/keys = {
 ]]
 
 input_pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 collision_layer = 1
 collision_mask = 1
 mode = 2
@@ -47,9 +95,9 @@ contact_monitor = true
 sleeping = false
 can_sleep = false
 linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
 angular_velocity = 0.0
-damp_override/linear = 1.0
-damp_override/angular = -1.0
+angular_damp = -1.0
 script = ExtResource( 1 )
 index = 0
 base_colour = Color( 1, 1, 1, 1 )
@@ -61,6 +109,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -50, -50 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -75,6 +124,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -40, -40 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -85,34 +135,27 @@ invert_border = 10.0
 [node name="jetpack-particles" type="Particles2D" parent="base-square"]
 
 position = Vector2( 1.31675, 18.0238 )
+rotation = 1.5708
 z = -1
-config/amount = 1024
-config/lifetime = 2.0
-config/process_mode = 1
-config/local_space = false
-params/direction = 0.0
-params/spread = 20.0
-params/linear_velocity = 200.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 0.0
-params/gravity_strength = 19.6
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 55.854
-params/initial_angle = 0.0
-params/initial_size = 2.0
-params/final_size = 5.0
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/direction = 0.35
-randomness/spread = 1.0
-randomness/linear_velocity = 0.5
-randomness/initial_angle = 1.0
-randomness/initial_size = 0.38
-randomness/final_size = 0.38
-color/color_ramp = ExtResource( 2 )
+emitting = true
+amount = 2000
+lifetime = 2.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 7 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Time", "Transform" ]
 
 [node name="player-colour" type="Polygon2D" parent="."]
 
@@ -121,6 +164,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -50, -50 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -130,17 +174,17 @@ invert_border = 100.0
 
 [node name="player-collision" type="CollisionShape2D" parent="."]
 
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/blink-player = SubResource( 2 )
+anims/blink-player = SubResource( 5 )
 playback/active = true
 playback/speed = 0.75
 blend_times = [  ]
 autoplay = ""
+
+

@@ -142,9 +142,9 @@ func build_action_list(player_id, input_method):
 		
 	elif (input_method[0] == "Gamepad"):
 		jump_event = InputEventJoypadButton.new()
-		left_event = InputEventJoypadButton.new()
-		right_event = InputEventJoypadButton.new()
-		jetpack_event = InputEventJoypadButton.new()
+		left_event = InputEventJoypadMotion.new()
+		right_event = InputEventJoypadMotion.new()
+		jetpack_event = InputEventJoypadMotion.new()
 		
 		jump_event.device = input_method[1]
 		left_event.device = input_method[1]
@@ -153,11 +153,11 @@ func build_action_list(player_id, input_method):
 		
 		jump_event.button_index = JOY_XBOX_A
 		left_event.axis = JOY_AXIS_0
-		left_event.value = -0.5
+		left_event.axis_value = -0.5
 		right_event.axis = JOY_AXIS_0
-		right_event.value = 0.5
+		right_event.axis_value = 0.5
 		jetpack_event.axis = JOY_AXIS_7
-		jetpack_event.value = 0.5
+		jetpack_event.axis_value = 0.5
 	
 	erase_and_add_action("jetpack" + str(player_id), jetpack_event)
 	erase_and_add_action("move_left" + str(player_id), left_event)

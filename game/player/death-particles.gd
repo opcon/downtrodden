@@ -4,7 +4,7 @@ extends Particles2D
 # var a = 2
 # var b = "textvar"
 const MAX_LIFETIME = 2.1
-var lifetime = 0
+var cur_lifetime = 0
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -12,7 +12,7 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	lifetime += delta
-	if (lifetime >= MAX_LIFETIME):
+	cur_lifetime += delta
+	if (cur_lifetime >= MAX_LIFETIME):
 		queue_free()
 		#get_parent().remove_child(self)

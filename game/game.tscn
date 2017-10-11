@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://score.gd" type="Script" id=2]
@@ -12,11 +12,26 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 bg_color = Color( 0.132111, 0.132111, 0.152344, 0.85 )
-light_color = Color( 0, 0, 0, 0 )
-dark_color = Color( 0, 0, 0, 0 )
-border_size = 0
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
 border_blend = false
-draw_bg = true
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,14 +45,19 @@ script = ExtResource( 2 )
 [node name="player1" type="Label" parent="score"]
 
 visible = false
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 75.0
 margin_top = 50.0
 margin_right = 181.0
 margin_bottom = 127.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.451172, 0.755798, 0.875, 1 )
 text = "99"
@@ -48,14 +68,19 @@ max_lines_visible = -1
 [node name="player2" type="Label" parent="score"]
 
 visible = false
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 1770.0
 margin_top = 50.0
 margin_right = 1876.0
 margin_bottom = 127.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0, 0.421875, 1 )
 text = "99"
@@ -66,14 +91,19 @@ max_lines_visible = -1
 [node name="player3" type="Label" parent="score"]
 
 visible = false
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 75.0
 margin_top = 974.0
 margin_right = 181.0
 margin_bottom = 1051.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.9375, 0.539246, 0.300293, 1 )
 text = "99"
@@ -84,14 +114,19 @@ max_lines_visible = -1
 [node name="player4" type="Label" parent="score"]
 
 visible = false
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 1770.0
 margin_top = 974.0
 margin_right = 1876.0
 margin_bottom = 1051.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.38443, 0.863281, 0.470474, 1 )
 text = "99"
@@ -111,27 +146,38 @@ z = 1
 
 [node name="Control" type="Control" parent="pause-overlay"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 960.0
 margin_top = 540.0
 margin_right = 1000.0
 margin_bottom = 580.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 
 [node name="Panel" type="Panel" parent="pause-overlay/Control"]
 
-anchor_right = 1
-anchor_bottom = 1
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = -960.0
 margin_top = -540.0
-margin_right = -920.0
-margin_bottom = -500.0
+margin_right = 920.0
+margin_bottom = 500.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_styles/panel = SubResource( 1 )
+_sections_unfolded = [ "Rect" ]
 
-[connection signal="max_score_reached"  from="score"  to="." method="_on_score_max_score_reached" binds=[  ]]
+[connection signal="max_score_reached" from="score" to="." method="_on_score_max_score_reached"]
+
+

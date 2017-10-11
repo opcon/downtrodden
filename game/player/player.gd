@@ -34,6 +34,7 @@ onready var score_node = parent_node.get_node("score")
 
 var death_particles_packed = preload("death-particles.tscn")
 var colour_ramp
+var gradient_texture
 
 var last_collided_team = -1
 
@@ -179,20 +180,30 @@ func _ready():
 	var colour3 =  base_colour
 	colour3.a = 0
 	
-	colour_ramp = ColorRamp.new()
-	colour_ramp.set_colors([base_colour, base_colour, colour3])
-	colour_ramp.set_offsets([0, 0.6667, 1])
+	colour_ramp = Gradient.new()
+	colour_ramp.colors = [base_colour, base_colour, colour3]
+	colour_ramp.offsets = [0, 0.6667, 1]
 	
-	get_node("base-square/jetpack-particles").set_color_ramp(colour_ramp)
+	gradient_texture = GradientTexture.new()
+	gradient_texture.gradient = colour_ramp
+	var pm = get_node("base-square/jetpack-particles").process_material.duplicate(true)
+	pm.color_ramp = gradient_texture
+	get_node("base-square/jetpack-particles").process_material = pm
 	get_node("player-colour").set_color(base_colour)
 	get_node("base-square/player-outline").set_color(base_colour)
+	get_node("base-square/jetpack-particles").set_emitting(false)
+	
+	Input.action_release("move_left" + str(index))
+	Input.action_release("move_right" + str(index))
+	Input.action_release("move_up" + str(index))
+	Input.action_release("jetpack" + str(index))
 	
 	randomize()
 	move_to_spawn()
 	
-	set_fixed_process(true)
-	
-func _fixed_process(delta):
+	set_physics_process(true)
+
+func _physics_process(delta):
 	health_state_machine.process(delta)
 	jetpack_state_machine.process(delta)
 	floor_timer += delta
@@ -200,7 +211,7 @@ func _fixed_process(delta):
 func move_to_spawn():
 	var spawn_points = get_tree().get_nodes_in_group("spawn")
 	var spi = randi() % spawn_points.size()
-	set_pos(spawn_points[spi].get_pos())
+	position = spawn_points[spi].position
 
 func is_alive():
 	return alive
@@ -226,8 +237,8 @@ func on_health_state_changed(state_from, state_to, args):
 		score_node.add_to_score(last_collided_team)
 		var inst = death_particles_packed.instance()
 		parent_node.add_child(inst)
-		inst.set_pos(get_pos())
-		inst.set_color_ramp(colour_ramp)
+		inst.position = position
+		inst.process_material.color_ramp = gradient_texture
 		disable()
 
 var old_layer_mask
@@ -235,16 +246,13 @@ var old_collision_mask
 
 func enable():
 	show()
-	set_layer_mask(old_layer_mask)
-	set_collision_mask(old_collision_mask)
+	layers = old_layer_mask
 	
 func disable():
 	hide()
 	get_node("base-square/jetpack-particles").set_emitting(false)
-	old_layer_mask = get_layer_mask()
-	old_collision_mask = get_collision_mask()
-	set_layer_mask(0)
-	set_collision_mask(0)
+	old_layer_mask = layers
+	layers = 0
 
 func should_recharge_jetpack():
 	return found_floor and (jetpack_fuel < MAX_JETPACK_FUEL)
