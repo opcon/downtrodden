@@ -1,4 +1,4 @@
-extends StreamPlayer
+extends AudioStreamPlayer
 
 var music_files = []
 var recognized_extensions = Array(ResourceLoader.get_recognized_extensions_for_type("AudioStream"))
@@ -32,7 +32,7 @@ func initialize():
 	fade_volume(0.25, 0.5)
 
 	set_process_input(true)
-	set_fixed_process(true)
+	set_physics_process(true)
 
 	current_index = randi() % music_files.size()
 	play_next_song()
@@ -45,7 +45,7 @@ func build_song_list():
 		var file_name = dir.get_next()
 		while (file_name != ""):
 			if (not dir.current_is_dir()):
-				if(recognized_extensions.has(file_name.extension())):
+				if(recognized_extensions.has(file_name.get_extension())):
 					music_files.append("res://music" + "/" + file_name)
 			file_name = dir.get_next()
 	# Shuffle music files list
@@ -100,7 +100,7 @@ func on_volume_state_changed(state_from, state_to, args):
 	elif (state_to == "fading"):
 		volume_fading = true
 
-func _fixed_process(delta):
+func _physics_process(delta):
 	volume_state_machine.process(delta)
 	if (volume_fading):
 		current_volume += volume_fading_direction * volume_fading_amount * delta
@@ -110,7 +110,8 @@ func _on_BackgroundMusic_finished():
 	play_next_song()
 
 func change_volume(new_volume):
-	set_volume(new_volume * master_volume)
+	volume_db = linear2db(new_volume * master_volume)
+	#set_volume(new_volume * master_volume)
 
 func set_master_volume(new_volume):
 	master_volume = new_volume * 0.01

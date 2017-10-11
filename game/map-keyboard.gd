@@ -11,7 +11,7 @@ func _ready():
 
 func _input(event):
 	if (event.is_pressed()):
-		if (event.type == InputEvent.KEY):
+		if (event is InputEventKey):
 			var code = event.scancode
 			keyboard_mappings[mapping_indicies[current_mapping]] = code
 			advance_to_next()

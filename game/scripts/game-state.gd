@@ -15,6 +15,8 @@ var base_colours = [
 	Color(0.327805,0.847656,0.457767)
 ]
 
+var neutral_colour = Color("#757575")
+
 var currentScene = null
 var currentGameMode = GameMode.None
 var number_of_players = 0
@@ -48,7 +50,7 @@ func reset():
 	winning_team_index = 0
 	InputMap.load_from_globals()
 	
-	for joystick in Input.get_connected_joysticks():
+	for joystick in Input.get_connected_joypads():
 		build_gui_action_list(["Gamepad", joystick])
 	build_gui_action_list(["Keyboard", 0])
 
@@ -118,15 +120,15 @@ func start_game(level_name):
 	print(current_device_indicies)
 
 func build_action_list(player_id, input_method):
-	var jump_event = InputEvent()
-	var left_event = InputEvent()
-	var right_event = InputEvent()
-	var jetpack_event = InputEvent()
+	var jump_event = null
+	var left_event = null
+	var right_event = null
+	var jetpack_event = null
 	if (input_method[0] == "Keyboard"):
-		jump_event.type = InputEvent.KEY
-		left_event.type = InputEvent.KEY
-		right_event.type = InputEvent.KEY
-		jetpack_event.type = InputEvent.KEY
+		jump_event = InputEventKey.new()
+		left_event = InputEventKey.new()
+		right_event = InputEventKey.new()
+		jetpack_event = InputEventKey.new()
 		
 		jump_event.device = input_method[1]
 		left_event.device = input_method[1]
@@ -139,10 +141,10 @@ func build_action_list(player_id, input_method):
 		jetpack_event.scancode = GameSettings.keyboard_mapping["jetpack"]
 		
 	elif (input_method[0] == "Gamepad"):
-		jump_event.type = InputEvent.JOYSTICK_BUTTON
-		left_event.type = InputEvent.JOYSTICK_MOTION
-		right_event.type = InputEvent.JOYSTICK_MOTION
-		jetpack_event.type = InputEvent.JOYSTICK_MOTION
+		jump_event = InputEventJoypadButton.new()
+		left_event = InputEventJoypadButton.new()
+		right_event = InputEventJoypadButton.new()
+		jetpack_event = InputEventJoypadButton.new()
 		
 		jump_event.device = input_method[1]
 		left_event.device = input_method[1]
@@ -165,18 +167,18 @@ func build_action_list(player_id, input_method):
 	build_gui_action_list(input_method)
 	
 func build_gui_action_list(input_method):
-	var ui_up_event = InputEvent()
-	var ui_down_event = InputEvent()
-	var ui_accept_event = InputEvent()
-	var ui_cancel_event = InputEvent()
-	var pause_event = InputEvent()
+	var ui_up_event = null
+	var ui_down_event = null
+	var ui_accept_event = null
+	var ui_cancel_event = null
+	var pause_event = null
 
 	if (input_method[0] == "Keyboard"):
-		ui_up_event.type = InputEvent.KEY
-		ui_down_event.type = InputEvent.KEY
-		ui_accept_event.type = InputEvent.KEY
-		ui_cancel_event.type = InputEvent.KEY
-		pause_event.type = InputEvent.KEY
+		ui_up_event = InputEventKey.new()
+		ui_down_event = InputEventKey.new()
+		ui_accept_event = InputEventKey.new()
+		ui_cancel_event = InputEventKey.new()
+		pause_event = InputEventKey.new()
 		
 		ui_up_event.device = input_method[1]
 		ui_down_event.device = input_method[1]
@@ -191,11 +193,11 @@ func build_gui_action_list(input_method):
 		pause_event.scancode = KEY_ESCAPE
 		
 	elif (input_method[0] == "Gamepad"):
-		ui_up_event.type = InputEvent.JOYSTICK_BUTTON
-		ui_down_event.type = InputEvent.JOYSTICK_BUTTON
-		ui_accept_event.type = InputEvent.JOYSTICK_BUTTON
-		ui_cancel_event.type = InputEvent.JOYSTICK_BUTTON
-		pause_event.type = InputEvent.JOYSTICK_BUTTON
+		ui_up_event = InputEventJoypadButton.new()
+		ui_down_event = InputEventJoypadButton.new()
+		ui_accept_event = InputEventJoypadButton.new()
+		ui_cancel_event = InputEventJoypadButton.new()
+		pause_event = InputEventJoypadButton.new()
 		
 		ui_up_event.device = input_method[1]
 		ui_down_event.device = input_method[1]
