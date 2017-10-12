@@ -6,9 +6,9 @@ font_path = "res://fonts/RubikMonoOne-Regular.ttf"
 
 [resource]
 
-size = 62
+size = 64
 use_mipmaps = false
 use_filter = false
 font_data = SubResource( 1 )
-_sections_unfolded = [ "Extra Spacing", "Settings" ]
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 

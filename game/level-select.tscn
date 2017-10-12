@@ -9,42 +9,48 @@
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 960.0
-margin_top = 540.0
-margin_right = 1000.0
-margin_bottom = 580.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource( 1 )
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
 [node name="Control" parent="." instance=ExtResource( 2 )]
 
-margin_left = 960.0
-margin_top = 540.0
-margin_right = 1000.0
-margin_bottom = 580.0
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
 
-[node name="prev-level" type="Label" parent="."]
+[node name="level-labels" type="VBoxContainer" parent="."]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 113
+alignment = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "custom_constants" ]
+
+[node name="prev-level" type="Label" parent="level-labels"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -960.0
-margin_top = -203.0
-margin_right = 960.0
-margin_bottom = -125.0
+margin_top = 307.0
+margin_right = 1920.0
+margin_bottom = 387.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.459674, 0.459674, 0.459674, 1 )
@@ -53,21 +59,21 @@ align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_colors" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Size Flags", "Theme", "custom_colors" ]
 
-[node name="current-level" type="Label" parent="."]
+[node name="current-level" type="Label" parent="level-labels"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -960.0
-margin_right = 960.0
-margin_bottom = 78.0
+margin_top = 500.0
+margin_right = 1920.0
+margin_bottom = 580.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -77,20 +83,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="next-level" type="Label" parent="."]
+[node name="next-level" type="Label" parent="level-labels"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -960.0
-margin_top = 202.0
-margin_right = 960.0
-margin_bottom = 280.0
+margin_top = 693.0
+margin_right = 1920.0
+margin_bottom = 773.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.459674, 0.459674, 0.459674, 1 )
@@ -105,23 +110,22 @@ _sections_unfolded = [ "custom_colors" ]
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -960.0
-margin_top = 460.0
-margin_right = 960.0
-margin_bottom = 515.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.690196, 0.690196, 0.690196, 1 )
 text = "Select a stage"
 align = 1
+valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Size Flags" ]
 
 

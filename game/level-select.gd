@@ -3,9 +3,9 @@ extends Control
 var selected_index = 0
 var level_list = []
 
-onready var prev_node = get_node("prev-level")
-onready var curr_node = get_node("current-level")
-onready var next_node = get_node("next-level")
+onready var prev_node = get_node("level-labels/prev-level")
+onready var curr_node = get_node("level-labels/current-level")
+onready var next_node = get_node("level-labels/next-level")
 
 var colour_index = randi() % GameState.base_colours.size()
 

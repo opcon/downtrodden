@@ -17,7 +17,6 @@ const DEFAULT_VOL_FADE_SPEED = 0.1
 
 func _ready():
 	initialize()
-	pass
 	
 func initialize():
 	set_master_volume(GameSettings.main_settings["volume"])

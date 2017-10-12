@@ -89,7 +89,11 @@ func start_game(level_name):
 	# Load the required resources
 	var level = ResourceLoader.load("res://world/" + level_name + ".tscn").instance()
 	var player_resource = ResourceLoader.load("res://player/player.tscn")
-	var game_scene = ResourceLoader.load("res://game.tscn").instance()
+	var game_holder = ResourceLoader.load("res://game-container.tscn").instance()
+	var game_scene = game_holder.get_node("game-camera/game")
+	#var game_scene = ResourceLoader.load("res://game.tscn").instance()
+	
+	var pause_overlay = game_scene.get_node("pause-overlay")
 	
 	var players_per_team = number_of_players / number_of_teams
 	# Add the players to our scene and build their action lists
@@ -112,7 +116,8 @@ func start_game(level_name):
 	game_scene.add_child(level)
 	
 	# Change the scene to the game scene
-	GameState.change_scene_to(game_scene)
+	#GameState.change_scene_to(game_scene)
+	GameState.change_scene_to(game_holder)
 	
 	# Fade in music
 	BackgroundMusic.fade_volume(1, 0.5)

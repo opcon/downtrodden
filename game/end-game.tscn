@@ -55,28 +55,22 @@ content_margin_bottom = -1.0
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 960.0
-margin_top = 540.0
-margin_right = 1000.0
-margin_bottom = 580.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+_sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="win-message" type="Label" parent="."]
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 960.0
-margin_bottom = -428.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 60.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -89,6 +83,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = SubResource( 3 )
+_sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -101,12 +96,8 @@ autostart = true
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 960.0
-margin_bottom = 540.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -115,7 +106,7 @@ size_flags_vertical = 1
 custom_constants/separation = 113
 alignment = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Rect", "Theme", "custom_constants" ]
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "Theme", "custom_constants" ]
 default_colour = null
 
 [node name="Next" type="Button" parent="end-game-buttons"]
@@ -124,9 +115,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 311.0
+margin_top = 307.0
 margin_right = 1920.0
-margin_bottom = 388.0
+margin_bottom = 387.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -150,9 +141,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 501.0
+margin_top = 500.0
 margin_right = 1920.0
-margin_bottom = 578.0
+margin_bottom = 580.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -176,9 +167,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 691.0
+margin_top = 693.0
 margin_right = 1920.0
-margin_bottom = 768.0
+margin_bottom = 773.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2

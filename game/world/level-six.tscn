@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://world/world-boundaries.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world/4-high-block.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://world/spawn.tscn" type="PackedScene" id=4]
 
 [node name="level" type="Node2D"]
-
 
 [node name="background" type="Polygon2D" parent="."]
 
@@ -17,6 +16,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.132111, 0.132111, 0.152344, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -26,9 +26,7 @@ invert_border = 100.0
 
 [node name="boundaries" parent="." instance=ExtResource( 1 )]
 
-
 [node name="platforms" type="Node2D" parent="."]
-
 
 [node name="StaticBody2D" parent="platforms" instance=ExtResource( 2 )]
 
@@ -54,7 +52,6 @@ scale = Vector2( 5, 1 )
 
 [node name="spawn-points" type="Node2D" parent="."]
 
-
 [node name="spawn" parent="spawn-points" instance=ExtResource( 4 )]
 
 position = Vector2( 471.906, 874.15 )
@@ -74,3 +71,5 @@ position = Vector2( 1277.86, 488.8 )
 [node name="spawn4" parent="spawn-points" instance=ExtResource( 4 )]
 
 position = Vector2( 661.609, 488.8 )
+
+

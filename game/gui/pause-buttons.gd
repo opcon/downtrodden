@@ -17,6 +17,8 @@ var owner_device
 
 var disconnected = false
 
+var parent_game = null
+
 func _ready():
 	if (default_colour == null):
 		default_colour = GameState.neutral_colour
@@ -38,9 +40,9 @@ func _process(delta):
 
 func do_input():
 	if (selected_button == RESUME_BUTTON):
-		get_parent().get_parent().get_parent().unpause_game()
+		parent_game.unpause_game()
 	elif (selected_button == QUIT_BUTTON):
-		get_parent().get_parent().get_parent().unpause_game()
+		parent_game.unpause_game()
 		GameState.goto_menu()
 
 func _input(event):

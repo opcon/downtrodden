@@ -2,7 +2,7 @@ extends Control
 
 const TEXT_WIDTH = 54
 const CONTROLLER_LABEL_WIDTH = 476
-const Y_VALUE = -200
+const Y_VALUE = 200
 
 var player_numbers
 
@@ -13,26 +13,31 @@ var current_player_number = 0
 
 var player_input_methods = []
 
-var default_label_colour = Color(0.690196,0.690196,0.690196)
+onready var default_label_colour = GameState.neutral_colour
+
+onready var players = get_node("players")
 
 func _ready():
 	set_process_input(true)
 	GameState.update_game_mode()
-	var children = get_node("players").get_children()
-	for i in range(children.size()):
-		children[i].hide()
-	
-	var interval = 1920 / GameState.number_of_teams
-	
-	for i in range(GameState.number_of_teams):
-		var controllerlabel = children[i].get_node("controllerlabel" + str(i+1))
-		children[i].rect_position = Vector2(-960 + (interval * i) + (interval) * 0.5, Y_VALUE)
-		children[i].show()
-		controllerlabel.hide()
-		controllerlabel.rect_position = Vector2(-CONTROLLER_LABEL_WIDTH * 0.5, -Y_VALUE * 2)
-	player_numbers = children
-	
+#	var children = get_node("players").get_children()
+#	for i in range(children.size()):
+#		children[i].hide()
+#
+#	var interval = players.rect_size.x / GameState.number_of_teams
+#
+#	for i in range(GameState.number_of_teams):
+#		var controllerlabel = children[i].get_node("controllerlabel" + str(i+1))
+#		children[i].rect_position = Vector2(interval * (i+0.5), Y_VALUE)
+#		children[i].show()
+#		controllerlabel.hide()
+#		controllerlabel.rect_position = Vector2(-CONTROLLER_LABEL_WIDTH * 0.5, -Y_VALUE * 2)
+#	player_numbers = children
+
+	layout_labels(true)
 	players_per_team = GameState.number_of_players / GameState.number_of_teams
+	
+	connect("resized", self, "_on_Control_resized");
 
 func _input(event):
 	if (event.is_pressed()):
@@ -127,3 +132,25 @@ func goto_level_select():
 		GameState.number_of_players = player_input_methods.size()
 		GameState.number_of_teams = GameState.number_of_players
 	GameState.goto_scene("level-select.tscn")
+
+func layout_labels(first_time = false):
+	var children = players.get_children()
+	if first_time:
+		for i in range(children.size()):
+			children[i].hide()
+	
+	var interval = players.rect_size.x / GameState.number_of_teams
+	
+	for i in range(GameState.number_of_teams):
+		var controllerlabel = children[i].get_node("controllerlabel" + str(i+1))
+		children[i].rect_position = Vector2(interval * (i+0.5), Y_VALUE)
+		children[i].show()
+		if first_time:
+			controllerlabel.hide()
+		controllerlabel.rect_position = Vector2((-CONTROLLER_LABEL_WIDTH + children[i].rect_size.x)*0.5, Y_VALUE * 2)
+	
+	if first_time:
+		player_numbers = children
+
+func _on_Control_resized():
+	call_deferred("layout_labels")

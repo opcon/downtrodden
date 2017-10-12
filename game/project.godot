@@ -17,8 +17,8 @@ main_scene="Null"
 
 [autoload]
 
-BackgroundMusic="*res://background-music.tscn"
 GameSettings="*res://scripts/game-settings.gd"
+BackgroundMusic="*res://background-music.tscn"
 GameState="*res://scripts/game-state.gd"
 Utilities="*res://scripts/utilities.gd"
 
@@ -26,7 +26,6 @@ Utilities="*res://scripts/utilities.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 window/stretch/shrink="1"
 window/height=1080
