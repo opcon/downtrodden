@@ -4,3 +4,6 @@ export/
 # Ignore Godot logs
 
 **/logs/*
+
+# Ignore godot import folder
+**/.import/*

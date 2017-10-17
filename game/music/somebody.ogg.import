@@ -6,5 +6,5 @@ path="res://.import/somebody.ogg-4f577490477a32dec68af14429a9f42d.oggstr"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
