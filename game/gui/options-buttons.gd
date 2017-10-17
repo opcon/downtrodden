@@ -102,6 +102,7 @@ func add_option(name, value):
 	b.add_style_override("custom_styles/normal", s)
 	b.add_color_override("font_color", default_colour)
 	b.add_font_override("font", main_font)
+	b.mouse_filter = MOUSE_FILTER_IGNORE
 	b.text = "%-15s%5s" % [name, value]
 	add_child(b)
 	#add_button("%-15s%5s" % [name, value])
