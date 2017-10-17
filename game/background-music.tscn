@@ -1,4 +1,4 @@
-[gd_scene load_steps=1 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://music/somebody.ogg" type="AudioStream" id=1]
 [ext_resource path="res://background-music.gd" type="Script" id=2]
@@ -6,13 +6,12 @@
 [node name="BackgroundMusic" type="AudioStreamPlayer"]
 
 stream = ExtResource( 1 )
-playing = false
-loop = false
 volume_db = 0.0
-stream_autoplay = false
-stream_paused = false
-loop_restart_time = 0.0
-buffering_ms = 500
+autoplay = false
+mix_target = 0
+bus = "Master"
 script = ExtResource( 2 )
 
-[connection signal="finished"  from="."  to="." method="_on_BackgroundMusic_finished" binds=[  ]]
+[connection signal="finished" from="." to="." method="_on_BackgroundMusic_finished"]
+
+

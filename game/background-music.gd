@@ -32,21 +32,28 @@ func initialize():
 
 	set_process_input(true)
 	set_physics_process(true)
-
-	current_index = randi() % music_files.size()
-	play_next_song()
+	
+	if music_files.size() > 0:
+		current_index = randi() % music_files.size()
+		play_next_song()
+	else:
+		print('Not playing music, no files found')
 
 func build_song_list():
 	# Build music files list
 	var dir = Directory.new()
-	if dir.open("res://music") == OK:
-		dir.list_dir_begin()
+	var d = "res://.import"
+	if dir.open(d) == OK:
+		dir.list_dir_begin(false) # Skip navigational entries
 		var file_name = dir.get_next()
 		while (file_name != ""):
 			if (not dir.current_is_dir()):
+				print('Found file %s, with extension %s' % [file_name, file_name.get_extension()])
 				if(recognized_extensions.has(file_name.get_extension())):
-					music_files.append("res://music" + "/" + file_name)
+					music_files.append(d + "/" + file_name)
 			file_name = dir.get_next()
+	else:
+		print('Failed to open music directory')
 	# Shuffle music files list
 	var shuffled = []
 	var indexList = range(music_files.size())
