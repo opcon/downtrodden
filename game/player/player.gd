@@ -238,6 +238,7 @@ func on_health_state_changed(state_from, state_to, args):
 		var inst = death_particles_packed.instance()
 		parent_node.add_child(inst)
 		inst.position = position
+		inst.process_material = inst.process_material.duplicate()
 		inst.process_material.color_ramp = gradient_texture
 		disable()
 
