@@ -33,9 +33,12 @@ func _ready():
 func _input(event):
 	if (event.is_pressed() and (event.device in GameState.current_device_indicies or event is InputEventKey)):
 		if (event.is_action("pause") and not game_finished):
-			print(event.device)
 			get_tree().set_input_as_handled()
-			pause_game(event.get_class(), event.device)
+			var cls = event.get_class()
+			if cls == "InputEventJoypadButton":
+				pause_game("InputEventJoypad", event.device)
+			else:
+				pause_game(event.get_class(), event.device)
 
 func _on_score_max_score_reached(team_index):
 	game_finished = true

@@ -30,7 +30,9 @@ var floor_timer = 0
 
 onready var parent_node = get_parent()
 onready	var pc = get_node("player-colour")
-onready var score_node = parent_node.get_node("score")
+onready var score_node = parent_node.get_node("score")	
+onready var p2d = get_node("base-square")
+onready var cs2d = get_node("player-collision")
 
 var death_particles_packed = preload("death-particles.tscn")
 var colour_ramp
@@ -121,9 +123,8 @@ func _integrate_forces(state):
 			lv.y = -2*JUMP_SPEED
 			lv.x = collision_normal.x * JUMP_SPEED*2
 			
-	var p2d = get_node("base-square")
-	var cs2d = get_node("player-collision")
-	var s = p2d.get_scale()
+
+	var s = p2d.scale
 	var extrascale = SCALE_ACCEL*step
 	if (move_left or move_right or jetpack):
 		s += Vector2(extrascale,extrascale)
@@ -134,18 +135,18 @@ func _integrate_forces(state):
 		s -= Vector2(extrascale,extrascale)
 		s.x = max(s.x, 1)
 		s.y = max(s.y, 1)
-	p2d.set_scale(s)
-	cs2d.set_scale(s)
-	pc.set_scale(s)
+	p2d.scale = s
+	cs2d.scale = s
+	pc.scale = s
 	
 	if (jetpack_fuel <= 0):
 		pc.hide()
 	else:
 		pc.show()
-		var points = pc.get_polygon()
+		var points = pc.polygon
 		points[0].y = (1 - jetpack_fuel / MAX_JETPACK_FUEL) * 100
 		points[3].y = (1- jetpack_fuel / MAX_JETPACK_FUEL) * 100
-		pc.set_polygon(points)
+		pc.polygon = points
 	
 	lv += state.get_total_gravity()*step
 	state.set_linear_velocity(lv)

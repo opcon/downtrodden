@@ -198,8 +198,8 @@ func build_gui_action_list(input_method):
 		pause_event.scancode = KEY_ESCAPE
 		
 	elif (input_method[0] == "Gamepad"):
-		ui_up_event = InputEventJoypadButton.new()
-		ui_down_event = InputEventJoypadButton.new()
+		ui_up_event = InputEventJoypadMotion.new()
+		ui_down_event = InputEventJoypadMotion.new()
 		ui_accept_event = InputEventJoypadButton.new()
 		ui_cancel_event = InputEventJoypadButton.new()
 		pause_event = InputEventJoypadButton.new()
@@ -210,8 +210,10 @@ func build_gui_action_list(input_method):
 		ui_cancel_event.device = input_method[1]
 		pause_event.device = input_method[1]
 		
-		ui_up_event.button_index = JOY_DPAD_UP
-		ui_down_event.button_index = JOY_DPAD_DOWN
+		ui_up_event.axis = JOY_ANALOG_LY
+		ui_up_event.axis_value = -1
+		ui_down_event.axis = JOY_ANALOG_LY
+		ui_down_event.axis_value = 1
 		ui_accept_event.button_index = JOY_XBOX_A
 		ui_cancel_event.button_index = JOY_XBOX_B
 		pause_event.button_index = JOY_START

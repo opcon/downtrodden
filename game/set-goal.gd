@@ -12,19 +12,19 @@ func _ready():
 
 func _input(event):
 	if (event.is_pressed()):
-		if (event.is_action("ui_accept")):
+		if event.is_action("ui_accept") and Input.is_action_just_pressed("ui_accept"):
 			get_tree().set_input_as_handled()
 			GameState.maximum_score = goal
 			GameState.call_deferred("start_game", GameState.level_list[GameState.current_level_index])
-		elif (event.is_action("ui_up")):
+		elif event.is_action("ui_up") and Input.is_action_just_pressed("ui_up"):
 			goal += 2
 			update_label()
-		elif (event.is_action("ui_down")):
+		elif event.is_action("ui_down") and Input.is_action_just_pressed("ui_down"):
 			goal -= 2
 			if (goal <= 0):
 				goal = 1
 			update_label()
-		elif (event.is_action("ui_cancel")):
+		elif event.is_action("ui_cancel") and Input.is_action_just_pressed("ui_cancel"):
 			GameState.maximum_score = goal
 			GameState.goto_scene("level-select.tscn")
 			get_tree().set_input_as_handled()

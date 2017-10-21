@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://score.gd" type="Script" id=2]
 [ext_resource path="res://fonts/Rubik.tres" type="DynamicFont" id=3]
-[ext_resource path="res://scene-management.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -161,10 +160,6 @@ text = "99"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[node name="scene-management" type="Node2D" parent="."]
-
-script = ExtResource( 4 )
 
 [node name="pause-overlay" type="Node2D" parent="."]
 

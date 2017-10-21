@@ -46,18 +46,18 @@ func do_input():
 		GameState.goto_menu()
 
 func _input(event):
-	if (event.is_pressed() and (event.get_class() == owner_type and event.device == owner_device) or disconnected):
-		if (event.is_action("ui_accept")):
+	if (event.is_pressed() and (event.get_class().begins_with(owner_type) and event.device == owner_device) or disconnected):
+		if event.is_action("ui_accept") and Input.is_action_just_pressed("ui_accept"):
 			get_tree().set_input_as_handled()
 			do_input()
-		if (event.is_action("ui_cancel")):
+		if event.is_action("ui_cancel") and Input.is_action_just_pressed("ui_cancel"):
 			button_selected(RESUME_BUTTON)
 			selected_button = RESUME_BUTTON
 			pending_input = true
 			get_tree().set_input_as_handled()
-		if (event.is_action("ui_down")):
+		if event.is_action("ui_down") and Input.is_action_just_pressed("ui_down"):
 			next_button()
-		if (event.is_action("ui_up")):
+		if event.is_action("ui_up") and Input.is_action_just_pressed("ui_up"):
 			prev_button()
 
 func next_button():

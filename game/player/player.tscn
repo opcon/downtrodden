@@ -2,9 +2,9 @@
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=1]
 
-min_value = 3.0
+min_value = 0.99
 max_value = 5.0
 bake_resolution = 100
 _data = [ Vector2( 0, 0 ), 0.0, 2.8, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
@@ -12,9 +12,9 @@ _data = [ Vector2( 0, 0 ), 0.0, 2.8, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 [sub_resource type="CurveTexture" id=2]
 
 width = 2048
-curve = SubResource( 6 )
+curve = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=3]
 
 render_priority = 0
 trail_divisor = 1
@@ -150,7 +150,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 7 )
+process_material = SubResource( 3 )
 texture = null
 normal_map = null
 h_frames = 1

@@ -49,5 +49,4 @@ pause=[  ]
 
 [rendering]
 
-threads/thread_model=2
 quality/filters/msaa=2

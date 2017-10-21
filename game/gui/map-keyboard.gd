@@ -15,9 +15,9 @@ func _input(event):
 			var code = event.scancode
 			keyboard_mappings[mapping_indicies[current_mapping]] = code
 			advance_to_next()
-		if (event.is_action("ui_cancel")):
+		if event.is_action("ui_cancel") and Input.is_action_just_pressed("ui_cancel"):
 			go_back_to_options()
-		if (event.is_action("ui_accept")):
+		if event.is_action("ui_accept"):
 			get_tree().set_input_as_handled()
 
 func advance_to_next():

@@ -32,20 +32,20 @@ func build_level_list():
 
 func _input(event):
 	if (event.is_pressed()):
-		if (event.is_action("ui_accept")):
+		if event.is_action("ui_accept") and Input.is_action_just_pressed("ui_accept"):
 			get_tree().set_input_as_handled()
 			var shuffled_levels = Utilities.shuffle_array(level_list)
 			var shuffled_index = shuffled_levels.find(level_list[selected_index])
 			GameState.level_list = shuffled_levels
 			GameState.current_level_index = shuffled_index
 			GameState.goto_scene("set-goal.tscn")
-		elif (event.is_action("ui_up")):
+		elif event.is_action("ui_up") and Input.is_action_just_pressed("ui_up"):
 			selected_index = (selected_index - 1) % level_list.size()
 			update_labels()
-		elif (event.is_action("ui_down")):
+		elif event.is_action("ui_down") and Input.is_action_just_pressed("ui_down"):
 			selected_index = (selected_index + 1) % level_list.size()
 			update_labels()
-		elif (event.is_action("ui_cancel")):
+		elif event.is_action("ui_cancel") and Input.is_action_just_pressed("ui_cancel"):
 			GameState.goto_scene("player-select.tscn")
 			get_tree().set_input_as_handled()
 
