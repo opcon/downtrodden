@@ -50,7 +50,7 @@ func _input(event):
 		if event.is_action("ui_accept") and Input.is_action_just_pressed("ui_accept"):
 			get_tree().set_input_as_handled()
 			do_input()
-		if event.is_action("ui_cancel") and Input.is_action_just_pressed("ui_cancel"):
+		if (event.is_action("ui_cancel") and Input.is_action_just_pressed("ui_cancel")) or (event.is_action("pause") and Input.is_action_just_pressed("pause")):
 			button_selected(RESUME_BUTTON)
 			selected_button = RESUME_BUTTON
 			pending_input = true
