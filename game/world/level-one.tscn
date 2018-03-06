@@ -1,67 +1,53 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://world/world-boundaries.tscn" type="PackedScene" id=1]
-[ext_resource path="res://world/4-high-block.tscn" type="PackedScene" id=2]
-[ext_resource path="res://world/2-high-block.tscn" type="PackedScene" id=3]
-[ext_resource path="res://world/spawn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world/world-background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/world-boundaries.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/4-high-block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/2-high-block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world/spawn.tscn" type="PackedScene" id=5]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" index="0"]
 
-[node name="background" type="Polygon2D" parent="."]
+[node name="background" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 0, 2.0506 )
-z = -15
-polygon = PoolVector2Array( 0, 0, 1920, 0, 1920, 1080, 0, 1080 )
-uv = PoolVector2Array(  )
-color = Color( 0.132111, 0.132111, 0.152344, 1 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
-invert_enable = false
-invert_border = 100.0
+[node name="boundaries" parent="." index="1" instance=ExtResource( 2 )]
 
-[node name="boundaries" parent="." instance=ExtResource( 1 )]
+[node name="platforms" type="Node2D" parent="." index="2"]
 
-[node name="platforms" type="Node2D" parent="."]
-
-[node name="StaticBody2D 2" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D 2" parent="platforms" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 1397.07, 761.953 )
 scale = Vector2( 3.5, 2 )
 
-[node name="StaticBody2D" parent="platforms" instance=ExtResource( 3 )]
+[node name="StaticBody2D" parent="platforms" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 327, 487.759 )
 scale = Vector2( 6, 2 )
 
-[node name="StaticBody2D 3" parent="platforms" instance=ExtResource( 3 )]
+[node name="StaticBody2D 3" parent="platforms" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 1383.94, 270.504 )
 scale = Vector2( 5, 2 )
 
-[node name="spawn-points" type="Node2D" parent="."]
+[node name="spawn-points" type="Node2D" parent="." index="3"]
 
-[node name="spawn" parent="spawn-points" instance=ExtResource( 4 )]
+[node name="spawn" parent="spawn-points" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 196.843, 366.963 )
 
-[node name="spawn 2" parent="spawn-points" instance=ExtResource( 4 )]
+[node name="spawn 2" parent="spawn-points" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 1483.02, 87.5199 )
 
-[node name="spawn 3" parent="spawn-points" instance=ExtResource( 4 )]
+[node name="spawn 3" parent="spawn-points" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 1396.71, 621.489 )
 
-[node name="spawn 4" parent="spawn-points" instance=ExtResource( 4 )]
+[node name="spawn 4" parent="spawn-points" index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 1153.61, 93.0718 )
 
-[node name="spawn 5" parent="spawn-points" instance=ExtResource( 4 )]
+[node name="spawn 5" parent="spawn-points" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 122.818, 705.626 )
 

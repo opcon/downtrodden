@@ -4,6 +4,14 @@ importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
 path="res://.import/one-day.ogg-e2f640f1532b97975998e1269ef3f5cf.oggstr"
 
+[deps]
+
+source_file="res://music/one-day.ogg"
+source_md5="f918f5ab725f7b71e15ef6f59164a2cf"
+
+dest_files=[ "res://.import/one-day.ogg-e2f640f1532b97975998e1269ef3f5cf.oggstr" ]
+dest_md5="480adba19f083de322e85e3d6d19c1c9"
+
 [params]
 
 loop=true

@@ -4,6 +4,14 @@ importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
 path="res://.import/somebody.ogg-4f577490477a32dec68af14429a9f42d.oggstr"
 
+[deps]
+
+source_file="res://music/somebody.ogg"
+source_md5="44e76cee82e963975aeceace9dc7b1aa"
+
+dest_files=[ "res://.import/somebody.ogg-4f577490477a32dec68af14429a9f42d.oggstr" ]
+dest_md5="a960fc1e30fe65d652c2011ab9b40361"
+
 [params]
 
 loop=false

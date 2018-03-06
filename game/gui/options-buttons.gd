@@ -96,10 +96,10 @@ func add_option(name, value):
 	var b = Button.new()
 	var s = StyleBoxEmpty.new()
 	b.flat = true
-	b.add_style_override("custom_styles/hover", s)
-	b.add_style_override("custom_styles/pressed", s)
-	b.add_style_override("custom_styles/focus", s)
-	b.add_style_override("custom_styles/normal", s)
+	b.add_stylebox_override("custom_styles/hover", s)
+	b.add_stylebox_override("custom_styles/pressed", s)
+	b.add_stylebox_override("custom_styles/focus", s)
+	b.add_stylebox_override("custom_styles/normal", s)
 	b.add_color_override("font_color", default_colour)
 	b.add_font_override("font", main_font)
 	b.mouse_filter = MOUSE_FILTER_IGNORE

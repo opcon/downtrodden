@@ -4,6 +4,14 @@ importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
 path="res://.import/invincible.ogg-b6c6739cbd15faff14c24925199f975c.oggstr"
 
+[deps]
+
+source_file="res://music/invincible.ogg"
+source_md5="af8eb0c4bb0b098d55a6f408d09e19c9"
+
+dest_files=[ "res://.import/invincible.ogg-b6c6739cbd15faff14c24925199f975c.oggstr" ]
+dest_md5="30b976189331b9094b0ed2aa36af51ce"
+
 [params]
 
 loop=true

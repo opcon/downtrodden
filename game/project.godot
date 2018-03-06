@@ -10,6 +10,7 @@ config_version=3
 
 [application]
 
+config/name="DownTrodden"
 run/main_scene="res://menu.tscn"
 icon="res://icon.png"
 name="DownTrodden"

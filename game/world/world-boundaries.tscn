@@ -4,23 +4,23 @@
 
 [node name="boundaries" type="Node2D"]
 
-[node name="roof" parent="." instance=ExtResource( 1 )]
+[node name="roof" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 960, 15 )
 scale = Vector2( 19.5, 1 )
 
-[node name="floor" parent="." instance=ExtResource( 1 )]
+[node name="floor" parent="." index="1" instance=ExtResource( 1 )]
 
 position = Vector2( 960, 1065 )
 scale = Vector2( 19.5, 1 )
 
-[node name="left-wall" parent="." instance=ExtResource( 1 )]
+[node name="left-wall" parent="." index="2" instance=ExtResource( 1 )]
 
 position = Vector2( 15, 536.669 )
 rotation = -1.5708
 scale = Vector2( 10.8965, 1 )
 
-[node name="right-wall" parent="." instance=ExtResource( 1 )]
+[node name="right-wall" parent="." index="3" instance=ExtResource( 1 )]
 
 position = Vector2( 1905, 536.669 )
 rotation = -1.5708

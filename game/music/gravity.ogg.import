@@ -4,6 +4,14 @@ importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
 path="res://.import/gravity.ogg-41658f9f8e6a428aeadef866eda97ec7.oggstr"
 
+[deps]
+
+source_file="res://music/gravity.ogg"
+source_md5="b34d1c3fc6f41d612041a21993ff2bca"
+
+dest_files=[ "res://.import/gravity.ogg-41658f9f8e6a428aeadef866eda97ec7.oggstr" ]
+dest_md5="76fbcda1b2fae8315f6b3c7062f3070a"
+
 [params]
 
 loop=true

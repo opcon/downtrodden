@@ -21,6 +21,7 @@ tracks/0/path = NodePath("Label:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 3, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -32,6 +33,7 @@ tracks/1/path = NodePath("logotype-particles:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 2.75, 3.5 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -52,12 +54,15 @@ margin_bottom = 580.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
-[node name="Control" parent="." instance=ExtResource( 1 )]
+[node name="Control" parent="." index="0" instance=ExtResource( 1 )]
 
-[node name="Label" type="Label" parent="."]
+mouse_default_cursor_shape = 0
+
+[node name="Label" type="Label" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -70,6 +75,7 @@ margin_bottom = 135.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -80,7 +86,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="logotype-particles" type="Control" parent="."]
+[node name="logotype-particles" type="Control" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -93,10 +99,11 @@ margin_bottom = 5.87982
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
-[node name="d-1" type="Particles2D" parent="logotype-particles"]
+[node name="d-1" type="Particles2D" parent="logotype-particles" index="0"]
 
 position = Vector2( 0.296692, 0.879822 )
 scale = Vector2( 0.4, 0.4 )
@@ -119,7 +126,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="o-1" type="Particles2D" parent="logotype-particles"]
+[node name="o-1" type="Particles2D" parent="logotype-particles" index="1"]
 
 position = Vector2( 61.3091, 8.23071 )
 scale = Vector2( 0.4, 0.4 )
@@ -142,7 +149,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="w-1" type="Particles2D" parent="logotype-particles"]
+[node name="w-1" type="Particles2D" parent="logotype-particles" index="2"]
 
 position = Vector2( 132.613, 8.23071 )
 scale = Vector2( 0.4, 0.4 )
@@ -165,7 +172,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="n-1" type="Particles2D" parent="logotype-particles"]
+[node name="n-1" type="Particles2D" parent="logotype-particles" index="3"]
 
 position = Vector2( 208.122, 10.436 )
 scale = Vector2( 0.4, 0.4 )
@@ -188,7 +195,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="t-1" type="Particles2D" parent="logotype-particles"]
+[node name="t-1" type="Particles2D" parent="logotype-particles" index="4"]
 
 position = Vector2( -9.46472, 117.759 )
 scale = Vector2( 0.4, 0.4 )
@@ -211,7 +218,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="r-1" type="Particles2D" parent="logotype-particles"]
+[node name="r-1" type="Particles2D" parent="logotype-particles" index="5"]
 
 position = Vector2( 28.7599, 124.315 )
 scale = Vector2( 0.4, 0.4 )
@@ -234,7 +241,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="o-2" type="Particles2D" parent="logotype-particles"]
+[node name="o-2" type="Particles2D" parent="logotype-particles" index="6"]
 
 position = Vector2( 74.8057, 124.05 )
 scale = Vector2( 0.4, 0.4 )
@@ -257,7 +264,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="d-2" type="Particles2D" parent="logotype-particles"]
+[node name="d-2" type="Particles2D" parent="logotype-particles" index="7"]
 
 position = Vector2( 130.408, 114.845 )
 scale = Vector2( 0.4, 0.4 )
@@ -280,7 +287,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="d-3" type="Particles2D" parent="logotype-particles"]
+[node name="d-3" type="Particles2D" parent="logotype-particles" index="8"]
 
 position = Vector2( 191.42, 114.845 )
 scale = Vector2( 0.4, 0.4 )
@@ -303,7 +310,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="e-1" type="Particles2D" parent="logotype-particles"]
+[node name="e-1" type="Particles2D" parent="logotype-particles" index="9"]
 
 position = Vector2( 253.903, 124.401 )
 scale = Vector2( 0.4, 0.4 )
@@ -326,7 +333,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="n-2" type="Particles2D" parent="logotype-particles"]
+[node name="n-2" type="Particles2D" parent="logotype-particles" index="10"]
 
 position = Vector2( 311.24, 124.401 )
 scale = Vector2( 0.4, 0.4 )
@@ -349,15 +356,14 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 
+root_node = NodePath("..")
+autoplay = "intro"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
+playback_speed = 1.0
 anims/intro = SubResource( 2 )
-playback/active = true
-playback/speed = 1.0
 blend_times = [  ]
-autoplay = "intro"
 
 

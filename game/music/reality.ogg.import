@@ -4,6 +4,14 @@ importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
 path="res://.import/reality.ogg-86f7662335fa1828e66605b5a8c16b9b.oggstr"
 
+[deps]
+
+source_file="res://music/reality.ogg"
+source_md5="93b095c344f9a979bf5cddf8875ba846"
+
+dest_files=[ "res://.import/reality.ogg-86f7662335fa1828e66605b5a8c16b9b.oggstr" ]
+dest_md5="82ee5db88595d49be5700440eee02a36"
+
 [params]
 
 loop=true

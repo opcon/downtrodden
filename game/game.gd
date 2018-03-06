@@ -25,10 +25,10 @@ func _ready():
 	move_child(overlay_right, cnt)
 	
 	style_overlay.bg_color = Color(1, 1, 1)
-	overlay_top.add_style_override("panel", style_overlay)
-	overlay_bottom.add_style_override("panel", style_overlay)
-	overlay_left.add_style_override("panel", style_overlay)
-	overlay_right.add_style_override("panel", style_overlay)
+	overlay_top.add_stylebox_override("panel", style_overlay)
+	overlay_bottom.add_stylebox_override("panel", style_overlay)
+	overlay_left.add_stylebox_override("panel", style_overlay)
+	overlay_right.add_stylebox_override("panel", style_overlay)
 
 func _input(event):
 	if (event.is_pressed() and (event.device in GameState.current_device_indicies or event is InputEventKey)):
@@ -105,14 +105,14 @@ func hide_controller_disconnected_overlay():
 
 func darken_outer():
 	style_overlay.bg_color = Color(0, 0, 0)
-	overlay_top.add_style_override("panel", style_overlay)
-	overlay_bottom.add_style_override("panel", style_overlay)
-	overlay_left.add_style_override("panel", style_overlay)
-	overlay_right.add_style_override("panel", style_overlay)
+	overlay_top.add_stylebox_override("panel", style_overlay)
+	overlay_bottom.add_stylebox_override("panel", style_overlay)
+	overlay_left.add_stylebox_override("panel", style_overlay)
+	overlay_right.add_stylebox_override("panel", style_overlay)
 	
 func lighten_outer():
 	style_overlay.bg_color = Color(1, 1, 1)
-	overlay_top.add_style_override("panel", style_overlay)
-	overlay_bottom.add_style_override("panel", style_overlay)
-	overlay_left.add_style_override("panel", style_overlay)
-	overlay_right.add_style_override("panel", style_overlay)
+	overlay_top.add_stylebox_override("panel", style_overlay)
+	overlay_bottom.add_stylebox_override("panel", style_overlay)
+	overlay_left.add_stylebox_override("panel", style_overlay)
+	overlay_right.add_stylebox_override("panel", style_overlay)

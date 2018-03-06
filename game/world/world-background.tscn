@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[node name="background" type="Polygon2D" index="0"]
+
+position = Vector2( 0, -0.902496 )
+z_index = -1
+z_as_relative = false
+polygon = PoolVector2Array( 0, 0, 1920, 0, 1920, 1080, 0, 1080 )
+uv = PoolVector2Array(  )
+color = Color( 0.132111, 0.132111, 0.152344, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Z Index" ]
+
+

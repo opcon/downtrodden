@@ -1,92 +1,78 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://world/world-boundaries.tscn" type="PackedScene" id=1]
-[ext_resource path="res://world/4-high-block.tscn" type="PackedScene" id=2]
-[ext_resource path="res://world/spawn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/world-background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/world-boundaries.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/4-high-block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/spawn.tscn" type="PackedScene" id=4]
 
 [node name="level" type="Node2D"]
 
-[node name="background" type="Polygon2D" parent="."]
+[node name="background" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 0, -0.902496 )
-z = -15
-polygon = PoolVector2Array( 0, 0, 1920, 0, 1920, 1080, 0, 1080 )
-uv = PoolVector2Array(  )
-color = Color( 0.132111, 0.132111, 0.152344, 1 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
-invert_enable = false
-invert_border = 100.0
+[node name="boundaries" parent="." index="1" instance=ExtResource( 2 )]
 
-[node name="boundaries" parent="." instance=ExtResource( 1 )]
+[node name="platforms" type="Node2D" parent="." index="2"]
 
-[node name="platforms" type="Node2D" parent="."]
-
-[node name="StaticBody2D" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D" parent="platforms" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 960, 960 )
 scale = Vector2( 2, 6 )
 
-[node name="StaticBody2D7" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D7" parent="platforms" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 1160, 960 )
 scale = Vector2( 2, 6 )
 
-[node name="StaticBody2D8" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D8" parent="platforms" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 1360, 960 )
 scale = Vector2( 2, 6 )
 
-[node name="StaticBody2D5" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D5" parent="platforms" index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 760, 960 )
 scale = Vector2( 2, 6 )
 
-[node name="StaticBody2D6" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D6" parent="platforms" index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 560, 960 )
 scale = Vector2( 2, 6 )
 
-[node name="StaticBody2D1" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D1" parent="platforms" index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 960, 780 )
 scale = Vector2( 2, 6 )
 
-[node name="StaticBody2D3" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D3" parent="platforms" index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 760, 780 )
 scale = Vector2( 2, 6 )
 
-[node name="StaticBody2D4" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D4" parent="platforms" index="7" instance=ExtResource( 3 )]
 
 position = Vector2( 1160, 780 )
 scale = Vector2( 2, 6 )
 
-[node name="StaticBody2D2" parent="platforms" instance=ExtResource( 2 )]
+[node name="StaticBody2D2" parent="platforms" index="8" instance=ExtResource( 3 )]
 
 position = Vector2( 960, 600 )
 scale = Vector2( 2, 6 )
 
-[node name="spawn-points" type="Node2D" parent="."]
+[node name="spawn-points" type="Node2D" parent="." index="3"]
 
-[node name="spawn" parent="spawn-points" instance=ExtResource( 3 )]
+[node name="spawn" parent="spawn-points" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 153.451, 923.886 )
 
-[node name="spawn1" parent="spawn-points" instance=ExtResource( 3 )]
+[node name="spawn1" parent="spawn-points" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 1736.47, 919.785 )
 
-[node name="spawn2" parent="spawn-points" instance=ExtResource( 3 )]
+[node name="spawn2" parent="spawn-points" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 1476.05, 759.842 )
 
-[node name="spawn3" parent="spawn-points" instance=ExtResource( 3 )]
+[node name="spawn3" parent="spawn-points" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 465.133, 722.933 )
 
